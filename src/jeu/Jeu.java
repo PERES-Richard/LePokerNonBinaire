@@ -2,27 +2,37 @@ package jeu;
 
 import java.util.Scanner;
 
+
 public class Jeu {
+	private Scanner s;
+	private Joueur j1;
+	
+	public void lancement(String[] args) {
+		System.out.println("Bienvenue sur la Main de Poker");
+		this.j1 = new Joueur();
+		System.out.println("Veuillez rentrer les cartes du joueur");
+		saisieCarte(args, j1);
+		fin();
+		
+		
+	}
+	
+	public void saisieCarte(String[] args, Joueur j) {
+		s = new Scanner(System.in);
+		String main = s.nextLine();
+		s.close();
+		j.setMain(main);
+		
+	}
+	
+	public void fin() {
+		System.out.println("Le joueur a gagné avec la main:"+j1.getMain());
+	}
 
 	public static void main(String[] args) {
-		
-		Scanner sc = new Scanner(System.in);
-		
-		System.out.print("Main du J1 : ");
-		String mainJ1 = sc.next();
-		
-		System.out.print("Main du J2 : ");
-		String mainJ2 = sc.next();
-		
-		Joueur j1 = new Joueur("J1", Carte.getCartes(mainJ1));
-		Joueur j2 = new Joueur("J2", Carte.getCartes(mainJ2));
-		
-		System.out.println("// J1 : " + j1);
-		System.out.println("// J2 : "+ j2);
-
-		
-		System.out.println("###############\n"
-				+ "Bravo J1, tu as gagnÃ© !");
+		// TODO Auto-generated method stub
+		Jeu maPartie = new Jeu();
+		maPartie.lancement(args);
 	}
 
 }

@@ -1,16 +1,16 @@
 package jeu;
 
-import java.util.ArrayList;
-
 public class Joueur {
+	private String nom;
+	
 	private String main;
 	
-	public Joueur() {
-		
+	public Joueur(String nom) {
+		this.nom = nom;
 	}
-		
-	public Joueur(String main) {
-		this.main = main;
+	
+	public String getNom() {
+		return nom;
 	}
 	
 	public String getMain() {

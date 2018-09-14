@@ -1,6 +1,8 @@
 package jeu;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class Jeu {
 	private Scanner s;
@@ -23,13 +25,26 @@ public class Jeu {
 		s = new Scanner(System.in);
 		String main = s.nextLine();
 		s.reset();
-		j.setMain(main);
+		j.setMain(traitement(main));
 
 		
 	}
 	
+	private ArrayList<String> traitement(String main){
+		String[] cartes = main.split(" ");
+		ArrayList<String> maintraitee = new ArrayList<String>();
+		for(String str : cartes) {
+			int carte = Integer.valueOf(str);
+			if(carte >= 2 && carte <= 10)
+				maintraitee.add(str);
+			else
+				System.out.println("Problemeeeeeeee");
+		}		
+		return maintraitee;
+	}
+	
 	public void fin() {
-		System.out.println("Le joueur j1 a gagné avec la main:"+j1.getMain().toString());
+		System.out.println("Le joueur j1 a gagné avec la main:"+j1.getMain().get(0));
 		s.close();
 	}
 

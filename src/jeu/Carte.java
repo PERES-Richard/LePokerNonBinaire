@@ -5,6 +5,10 @@ public class Carte {
 	private int valeur;
 	private Couleur couleur;
 	
+	public Carte(int valeur) {
+		this.valeur = valeur;
+	}
+	
 	public Carte(Couleur couleur, int valeur) {
 		this.couleur = couleur;
 		this.valeur = valeur;
@@ -25,5 +29,9 @@ public class Carte {
 
 	public void setCouleur(Couleur couleur) {
 		this.couleur = couleur;
+	}
+	
+	public String toString() {
+		return "Carte "+this.getValeur();
 	}
 }

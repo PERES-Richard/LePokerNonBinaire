@@ -16,6 +16,8 @@ public class Jeu {
 		saisieCarte(args, j1);
 		System.out.println("Veuillez rentrer les cartes de "+j2.getNom()+"(main 2)");
 		saisieCarte(args, j2);
+		CarteLaPlusHaute temporaire = new CarteLaPlusHaute();
+		System.out.println(temporaire.compare(j1.getMain(), j2.getMain()));
 		fin();
 		
 		

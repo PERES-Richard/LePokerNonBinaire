@@ -25,22 +25,21 @@ public class Jeu {
 		s = new Scanner(System.in);
 		String main = s.nextLine();
 		s.reset();
-		j.setMain(traitement(main));
-
-		
+		try {
+			j.setMain(traitement(main));
+		}
+		catch(CarteInvalideException e) {
+			System.exit(0);
+		}
+	
 	}
 	
 	private ArrayList<String> traitement(String main){
 		String[] cartes = main.split(" ");
-		ArrayList<String> maintraitee = new ArrayList<String>();
-		for(String str : cartes) {
-			int carte = Integer.valueOf(str);
-			if(carte >= 2 && carte <= 10)
-				maintraitee.add(str);
-			else
-				System.out.println("Problemeeeeeeee");
-		}		
-		return maintraitee;
+		ArrayList<String> mainTraitee = new ArrayList<String>();
+		for(String str : cartes)
+			mainTraitee.add(str);	
+		return mainTraitee;
 	}
 	
 	public void fin() {

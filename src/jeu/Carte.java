@@ -31,7 +31,22 @@ public class Carte {
 		this.couleur = couleur;
 	}
 	
+	public String getSymbol() {
+		switch(this.getValeur()) {
+			case 14:
+				return "As";
+			case 13:
+				return "Roi";
+			case 12:
+				return "Dame";
+			case 11:
+				return "Valet";
+			default:
+				return ""+this.getValeur();
+		}
+	}
+	
 	public String toString() {
-		return "Carte "+this.getValeur();
+		return ""+this.getSymbol()+" de "+this.getCouleur();
 	}
 }

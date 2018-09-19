@@ -55,14 +55,21 @@ public class Carte {
 			try {
 				v = Integer.parseInt(valeur);
 			} catch (NumberFormatException e) {
-				// TODO Pas un nombre donc pas une valeur valable
+				if(valeur.equalsIgnoreCase("J"))
+					this.valeur = 11;
+				if(valeur.equalsIgnoreCase("Q"))
+					this.valeur = 12;
+				if(valeur.equalsIgnoreCase("K"))
+					this.valeur = 13;
+				if(valeur.equalsIgnoreCase("A"))
+					this.valeur = 14;
+				// TODO else exception pas valeur valable
 			}
 
 			if (v == 1) {
 				/** TODO exception pas une valeur valable */
 			}
-			
-			this.valeur = v;
+			else this.valeur = v;
 		}
 	}
 
@@ -75,17 +82,14 @@ public class Carte {
 	}
 
 	public void setCouleur(String couleur) {
-		switch (couleur) {
-		case "Pi":
+		if(couleur.equalsIgnoreCase("pi"))
 			this.couleur = Couleur.Pique;
-		case "Co":
-			this.couleur = Couleur.Coeur;
-		case "Tr":
-			this.couleur = Couleur.Trefle;
-		case "Ca":
+		if(couleur.equalsIgnoreCase("ca"))
 			this.couleur = Couleur.Carreau;
-		default: // TODO exception
-		}
+		if(couleur.equalsIgnoreCase("co"))
+			this.couleur = Couleur.Coeur;
+		if(couleur.equalsIgnoreCase("tr"))
+			this.couleur = Couleur.Trefle;
 	}
 
 	public String getSymbol() {

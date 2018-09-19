@@ -5,12 +5,18 @@ import java.util.Scanner;
 
 
 /** Accents
- * 
-è = \u00e8
-é = \u00e9
-ê = \u00ea
-à = \u00e0
-ù = \u00f9
+  
+e aigu = \u00e8
+e grave = \u00e9
+e circonflexe = \u00ea
+a accent = \u00e0
+u accent = \u00f9
+
+ */
+
+/** Cartes Possibles
+
+ {2,3,4,5,6,7,8,9,10,J,Q,K,A}+{Pi,Co,Tr,Ca}
 
  */
 

@@ -36,7 +36,7 @@ public class Jeu {
 		
 		System.out.println("Veuillez rentrer les cartes de J1");
 		saisieCarte(j1, "Uno");
-		System.out.println("Veuillez rentrer les cartes de J2");
+		System.out.println("\nVeuillez rentrer les cartes de J2");
 		saisieCarte(j2, "Dos");
 		sc.close();
 		

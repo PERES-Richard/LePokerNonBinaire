@@ -17,6 +17,12 @@ public class Carte {
 		setValeur(valeur);
 	}
 	
+	public Carte(String main) {
+		setCouleur(main.substring(main.length()-3, main.length()-1));
+		setValeur(main.substring(0, main.length()-3));
+	}
+	
+	
 	public int getValeur() {
 		return valeur;
 	}
@@ -27,11 +33,33 @@ public class Carte {
 	
 	public void setValeur(String valeur) {
 		if(valeur.length() > 2 || valeur.length() < 0) {
-			
+			// TODO exception "pas une valeur"
 		}
 		
-		if(valeur.length() == 1) {
+		if(valeur.length() == 2) {
+			int v=11;
 			
+			try {
+				v=Integer.parseInt(valeur);
+			}
+			catch(NumberFormatException e) {
+				// TODO Pas un nombre donc pas une valeur valable
+			}
+			
+			if(v>10) { /** TODO exception pas une valeur valable */}
+			
+		}
+		else {
+			int v=1;
+			
+			try {
+				v=Integer.parseInt(valeur);
+			}
+			catch(NumberFormatException e) {
+				// TODO Pas un nombre donc pas une valeur valable
+			}
+			
+			if(v==1) { /** TODO exception pas une valeur valable */}
 		}
 	}
 
@@ -85,14 +113,10 @@ public class Carte {
 		
 		for(String carte : cartes) {
 			if(carte.length() > 4 || carte.length() < 3) { /*TODO exception "pas une carte"}*/}
-			
-			String couleur = main.substring(main.length()-3, main.length()-1);
-			String valeur = main.substring(main.length()-3, main.length()-1);
-			
-			mainCartes.add(new Carte(valeur, couleur));
+			mainCartes.add(new Carte(carte));
 		}
 		
-		return null;
+		return mainCartes;
 	}
 	
 	/**
@@ -101,13 +125,13 @@ public class Carte {
 			case "A" :
 				valeur = 14;
 				break;
-			case "R" : case "K" :
+			case "K" :
 				valeur = 13;
 				break;
-			case "D" : case "Q" :
+			case "Q" :
 				valeur = 12;
 				break;
-			case "V" : case "J" :
+			case "J" :
 				valeur = 11;
 				break;
 		}

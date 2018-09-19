@@ -25,6 +25,7 @@ public class Jeu {
 	
 	public static final int maxCarte = 1;
 	private Joueur j1, j2;
+	private Scanner sc;
 	
 	public void lancement() {
 		
@@ -34,25 +35,25 @@ public class Jeu {
 		//this.j2 = new Joueur("Pierre");
 		
 		System.out.println("Veuillez rentrer les cartes de J1");
-		saisieCarte(j1);
+		saisieCarte(j1, "Uno");
 		System.out.println("Veuillez rentrer les cartes de J2");
-		saisieCarte(j2);
+		saisieCarte(j2, "Dos");
+		sc.close();
 		
-		CarteLaPlusHaute temporaire = new CarteLaPlusHaute();
+		//CarteLaPlusHaute temporaire = new CarteLaPlusHaute();
 		
-		System.out.println(temporaire.compare(j1.getMain(), j2.getMain()));
-		System.out.println("Le joueur j1 a gagn\u00e8 avec la main:"+j1.getMain().get(0));
+		//System.out.println(temporaire.compare(j1.getMain(), j2.getMain()));
+		System.out.println("Le joueur j1 a gagn\u00e8 avec la main:"+j1.getMain());
 		
 		
 	}
 	
-	public void saisieCarte(Joueur j) {
-		Scanner sc = new Scanner(System.in);
-		j.setMain(sc.nextLine());
-		sc.close();
+	public void saisieCarte(Joueur j, String nomJ) {
+		sc = new Scanner(System.in);
+		j = new Joueur (nomJ, sc.nextLine());
 	}
 
-	public static void main() {
+	public static void main(String[] args) {
 		Jeu maPartie = new Jeu();
 		maPartie.lancement();
 	}

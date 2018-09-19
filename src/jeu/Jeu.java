@@ -16,6 +16,8 @@ import java.util.Scanner;
 
 
 public class Jeu {
+	
+	public static final int maxCarte = 1;
 	private Joueur j1, j2;
 	
 	public void lancement() {
@@ -25,9 +27,9 @@ public class Jeu {
 		//this.j1 = new Joueur("Jean");
 		//this.j2 = new Joueur("Pierre");
 		
-		System.out.println("Veuillez rentrer les cartes de "+j1.getNom()+" (main 1)");
+		System.out.println("Veuillez rentrer les cartes de J1");
 		saisieCarte(j1);
-		System.out.println("Veuillez rentrer les cartes de "+j2.getNom()+" (main 2)");
+		System.out.println("Veuillez rentrer les cartes de J2");
 		saisieCarte(j2);
 		
 		CarteLaPlusHaute temporaire = new CarteLaPlusHaute();
@@ -40,9 +42,8 @@ public class Jeu {
 	
 	public void saisieCarte(Joueur j) {
 		Scanner sc = new Scanner(System.in);
-		String main = sc.nextLine();
+		j.setMain(sc.nextLine());
 		sc.close();
-		//j.setMain();
 	}
 
 	public static void main() {

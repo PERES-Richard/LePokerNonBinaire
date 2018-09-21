@@ -4,8 +4,21 @@ import java.util.ArrayList;
 
 public class CarteLaPlusHaute extends Combinaison {
 	private Carte carteHaute;
+	private static final int puissance = 0;
 
 	public CarteLaPlusHaute(ArrayList<Carte> main) {
+		this.carteHaute = meilleureCarte(main);
+	}
+
+	public Carte getCarteHaute() {
+		return this.carteHaute;
+	}
+	
+	public int getPuissance() {
+		return this.puissance;
+	}
+	
+	public Carte meilleureCarte(ArrayList<Carte> main) {
 		Carte carteH, carte;
 		carteH = main.get(0);
 		for (int i=1; i<main.size(); i++) {
@@ -13,13 +26,13 @@ public class CarteLaPlusHaute extends Combinaison {
 			if (carteH.getValeur() < carte.getValeur())
 				carteH = carte;
 		}
-		this.carteHaute = carteH;
+		return carteH;
 	}
-
-	public Carte getCarteHaute() {
-		return this.carteHaute;
+	
+	public int compareTo(CarteLaPlusHaute c) {
+		return 0; //Il faudrait utiliser la methode meilleureCarte pour ne pas avoir a réécrire une methode
 	}
-
+	
 	/*
 	public int compare(ArrayList<Carte> m1, ArrayList<Carte> m2) {
 		int maxm1=0; int i1=0; int i2=0; int maxm2=0;
@@ -40,4 +53,5 @@ public class CarteLaPlusHaute extends Combinaison {
 			return maxm1;
 	}
 	*/
+
 }

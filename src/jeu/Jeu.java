@@ -16,7 +16,7 @@ u accent = \u00f9
 
 /** Cartes Possibles
 
- {2,3,4,5,6,7,8,9,10,J,Q,K,A}+{Pi,Co,Tr,Ca}
+ {2,3,4,5,6,7,8,9,10,J,Q,K,A}x{Pi,Co,Tr,Ca}
 
  */
 
@@ -46,6 +46,12 @@ public class Jeu {
 		System.out.println("Le joueur j1 a gagn\u00e8 avec la main:"+j1.getMain());
 		
 		
+	}
+	
+	public Joueur getGagnant(Joueur j1, Joueur j2){
+		j1.getCombinaison().get(0).compareTo(j2.getCombinaison().get(0));
+		return j1;
+		//return j2;
 	}
 	
 	public void saisieCarte(Joueur j, String nomJ) {

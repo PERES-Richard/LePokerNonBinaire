@@ -65,9 +65,12 @@ public class Jeu {
 			}
 		}
 		
-		System.out.println("################\n"
-				+ "Le joueur " + j1.getNom() + " gagne avec la main : "+j1.getMain());
-
+		if (getGagnant() == null) {
+			System.out.println("Egalite");
+		}
+		else {
+			System.out.println("Le joueur " + getGagnant().getNom() + " gagne avec la main " +getGagnant().getMain());
+		}
 		sc.close();
 
 	}
@@ -79,10 +82,25 @@ public class Jeu {
 		
 		return false;
 	}
+	
+	
 
-	public Joueur getGagnant(Joueur j1, Joueur j2){
-		j1.getCombinaison().get(0).compareTo(j2.getCombinaison().get(0));
-		return j1; // TODO return le bon gagnant
+	public Joueur getGagnant(){
+		
+		if (j1.getPuissanceTopCombinaison() > j2.getPuissanceTopCombinaison())
+			return j1;
+		else if(j1.getPuissanceTopCombinaison() < j2.getPuissanceTopCombinaison())
+			return j2;
+		else if(j1.getPuissanceTopCombinaison() == j2.getPuissanceTopCombinaison()) {	
+			Combinaison combi = j1.getCombinaison().get(0);		
+			switch(combi.compare(j1.getMain(), j2.getMain())) {
+				case -1 :
+					return j2;
+				case 1 :
+					return j1;
+			}
+		}
+		return null;
 	}
 
 	public static void main(String[] args) {

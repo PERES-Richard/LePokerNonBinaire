@@ -2,7 +2,7 @@ package jeu;
 
 import java.util.ArrayList;
 
-public class Carte {
+public class Carte implements Comparable<Carte> {
 
 	private int valeur;
 	private Couleur couleur;
@@ -131,6 +131,11 @@ public class Carte {
 		}
 		System.out.println(mainCartes+"\n");
 		return mainCartes;
+	}
+
+	@Override
+	public int compareTo(Carte c2) {
+		return Integer.compare(this.getValeur(), c2.getValeur());
 	}
 
 }

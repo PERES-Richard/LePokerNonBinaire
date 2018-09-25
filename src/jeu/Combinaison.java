@@ -1,14 +1,19 @@
 package jeu;
 
-public abstract class Combinaison {
+import java.util.ArrayList;
+import java.util.Comparator;
+
+public abstract class Combinaison implements Comparator<ArrayList<Carte>>, Comparable<Combinaison> {
 	
-	int puissance;
+	private int puissance;
 	
-	public int compareTo(Combinaison c) {
-		if (this.puissance - c.puissance == 0) {
-			return 0; //je sais pas trop comment faire la ...
-		}else{
-			return this.puissance - c.puissance;
-		}
+	public int getPuissance() {
+		return puissance;
 	}
+	
+	public void setPuissance(int i) {
+		this.puissance = i;
+	}
+	
+
 }

@@ -7,36 +7,23 @@ public class Joueur {
 	private ArrayList<Carte> main;
 	private ArrayList<Combinaison> comb;
 
-	public Joueur(String nom){
+	
+	public Joueur(String nom, String main) throws Exception{
 		this.nom = nom;
+		setMain(main);
+		comb = findCombinaison(this.main);
 	}
 
-	public Joueur(String nom, String main){
-		this.nom = nom;
-		this.main = doMain(main);
-		this.comb = findCombinaison(this.main);
-	}
-
-	public void setMain(String main){
+	private void setMain(String main) throws Exception{
 		this.main = Carte.convertToCarte(main);
 	}
 
-	public String getNom() {
-		return nom;
-	}
+	public ArrayList<Carte> getMain() { return main; }
+	public ArrayList<Combinaison> getCombinaison() { return comb; }
+	public String getNom() { return nom; }
 
-	public ArrayList<Carte> getMain() {
-		return main;
-	}
-
-	public ArrayList<Combinaison> getCombinaison() {
-		return comb;
-	}
-
-	public ArrayList<Carte> doMain(String main){
-		return Carte.convertToCarte(main);
-	}
-
+	
+	
 	public ArrayList<Combinaison> findCombinaison(ArrayList<Carte> main) {
 
 		ArrayList<Combinaison> temp = new ArrayList<Combinaison>();
@@ -50,7 +37,11 @@ public class Joueur {
 		return temp;
 	}
 
-	public boolean dansMain(Carte carte) {
-		return this.main.contains(carte);
+	public boolean inHand(Carte carte) {		
+		for(Carte c : main)
+			if(carte.toString().equals(c.toString()))
+				return true;
+		
+		return false;
 	}
 }

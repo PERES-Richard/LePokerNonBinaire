@@ -1,8 +1,5 @@
 package jeu;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-
 public abstract class Combinaison {
 	
 	int puissance;

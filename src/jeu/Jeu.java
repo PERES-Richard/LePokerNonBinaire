@@ -1,6 +1,5 @@
 package jeu;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -16,7 +15,7 @@ u accent = \u00f9
 
 /** Cartes Possibles
 
- {2,3,4,5,6,7,8,9,10,J,Q,K,A}x{Pi,Co,Tr,Ca}
+ {2,3,4,5,6,7,8,9,10,V,D,R,A}x{Pi,Co,Tr,Ca}
 
  */
 
@@ -29,34 +28,61 @@ public class Jeu {
 
 	public void lancement() {
 
-		System.out.println("Bienvenue sur la Main de Poker");
+		sc = new Scanner(System.in);
 
-		this.j1 = new Joueur("Jean");
-		this.j2 = new Joueur("Pierre");
+		System.out.println("Bienvenue sur le Poker Non Binaire\n");
 
-		System.out.println("Veuillez rentrer les cartes de J1");
-		saisieCarte(j1);
-		System.out.println("\nVeuillez rentrer les cartes de J2");
-		saisieCarte(j2);
+
+		boolean reload = true;
+				
+		while(reload) {
+			
+			boolean mainJ1Valide = false;
+			boolean mainJ2Valide = false;
+			
+			while (!mainJ1Valide)
+				try {
+					System.out.print("Main de J1 : ");
+					j1 = new Joueur("J1", sc.nextLine());
+					mainJ1Valide = true;
+				} catch (Exception e) {
+					System.out.println("\n/!\\Erreur dans la saisie de carte : " + e.getMessage() + ". Recommencer la saisie.\n");
+				}
+			
+			
+			while (!mainJ2Valide)
+				try {
+					System.out.print("Main de J2 : ");
+					j2 = new Joueur("J2", sc.nextLine());
+					mainJ2Valide = true;
+				} catch (Exception e) {
+					System.out.println("\n/!\\Erreur dans la saisie de carte : " + e.getMessage() + ". Recommencer la saisie.\n");
+				}
+	
+			reload = checkDuplicates();
+			if (reload) {
+				System.out.println("Erreur, J1 et J2 ne peuvent pas avoir une carte en commun. Recommencer la saisie.\n################\n");
+			}
+		}
+		
+		System.out.println("################\n"
+				+ "Le joueur " + j1.getNom() + " gagne avec la main : "+j1.getMain());
+
 		sc.close();
 
-		//CarteLaPlusHaute temporaire = new CarteLaPlusHaute();
+	}
 
-		//System.out.println(temporaire.compare(j1.getMain(), j2.getMain()));
-		System.out.println("Le joueur j1 a gagn\u00e8 avec la main:"+j1.getMain());
-
-
+	private boolean checkDuplicates() {
+		for(Carte c : j1.getMain())
+			if(j2.inHand(c))
+				return true;
+		
+		return false;
 	}
 
 	public Joueur getGagnant(Joueur j1, Joueur j2){
 		j1.getCombinaison().get(0).compareTo(j2.getCombinaison().get(0));
-		return j1;
-		//return j2;
-	}
-
-	public void saisieCarte(Joueur j) {
-		sc = new Scanner(System.in);
-		j.setMain(sc.nextLine());
+		return j1; // TODO return le bon gagnant
 	}
 
 	public static void main(String[] args) {

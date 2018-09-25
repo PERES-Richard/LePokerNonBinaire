@@ -15,7 +15,7 @@ public class CarteLaPlusHaute extends Combinaison {
 	}
 	
 	public int getPuissance() {
-		return this.puissance;
+		return puissance;
 	}
 	
 	public Carte meilleureCarte(ArrayList<Carte> main) {
@@ -30,7 +30,7 @@ public class CarteLaPlusHaute extends Combinaison {
 	}
 	
 	public int compareTo(CarteLaPlusHaute c) {
-		return 0; //Il faudrait utiliser la methode meilleureCarte pour ne pas avoir a réécrire une methode
+		return 0; //Il faudrait utiliser la methode meilleureCarte pour ne pas avoir a rï¿½ï¿½crire une methode
 	}
 	
 	/*

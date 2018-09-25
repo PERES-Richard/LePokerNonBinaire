@@ -12,14 +12,14 @@ public class Carte {
 		this.valeur = valeur;
 	}
 
-	public Carte(String valeur, String couleur) {
-		setCouleur(couleur);
-		setValeur(valeur);
+	public Carte(String valeur, String couleur) throws Exception {
+		setCouleur(couleur, valeur+couleur);
+		setValeur(valeur, valeur+couleur);
 	}
 
-	public Carte(String main) {
-		setCouleur(main.substring(main.length() - 2, main.length()));
-		setValeur(main.substring(0, main.length() - 2));
+	public Carte(String main) throws Exception {
+		setCouleur(main.substring(main.length() - 2, main.length()), main);
+		setValeur(main.substring(0, main.length() - 2), main);
 	}
 
 	public int getValeur() {
@@ -30,9 +30,9 @@ public class Carte {
 		this.valeur = valeur;
 	}
 
-	public void setValeur(String valeur) {
+	public void setValeur(String valeur, String carte) throws Exception {
 		if (valeur.length() > 2 || valeur.length() < 0) {
-			// TODO exception "pas une valeur"
+			throw new Exception(new Exception("Carte \"" + carte + "\" invalide : Valeur \"" + valeur + "\" incorrect"));
 		}
 
 		if (valeur.length() == 2) {
@@ -41,11 +41,11 @@ public class Carte {
 			try {
 				v = Integer.parseInt(valeur);
 			} catch (NumberFormatException e) {
-				// TODO Pas un nombre donc pas une valeur valable
+				throw new Exception(new Exception("Carte \"" + carte + "\" invalide : Valeur \"" + valeur + "\" incorrect"));
 			}
 
 			if (v > 10) {
-				/** TODO exception pas une valeur valable */
+				throw new Exception(new Exception("Carte \"" + carte + "\" invalide : Valeur \"" + valeur + "\" incorrect"));
 			}
 			this.valeur = v;
 
@@ -55,19 +55,18 @@ public class Carte {
 			try {
 				v = Integer.parseInt(valeur);
 			} catch (NumberFormatException e) {
-				if(valeur.equalsIgnoreCase("J"))
-					this.valeur = 11;
-				if(valeur.equalsIgnoreCase("Q"))
-					this.valeur = 12;
-				if(valeur.equalsIgnoreCase("K"))
-					this.valeur = 13;
+				if(valeur.equalsIgnoreCase("V"))
+					v = 11;
+				if(valeur.equalsIgnoreCase("D"))
+					v = 12;
+				if(valeur.equalsIgnoreCase("R"))
+					v = 13;
 				if(valeur.equalsIgnoreCase("A"))
-					this.valeur = 14;
-				// TODO else exception pas valeur valable
+					v = 14;
 			}
 
 			if (v == 1) {
-				/** TODO exception pas une valeur valable */
+				throw new Exception(new Exception("Carte \"" + carte + "\" invalide : Valeur \"" + valeur + "\" incorrect"));
 			}
 			else this.valeur = v;
 		}
@@ -81,7 +80,7 @@ public class Carte {
 		this.couleur = couleur;
 	}
 
-	public void setCouleur(String couleur) {
+	public void setCouleur(String couleur, String carte) {
 		if(couleur.equalsIgnoreCase("pi"))
 			this.couleur = Couleur.Pique;
 		if(couleur.equalsIgnoreCase("ca"))
@@ -111,28 +110,27 @@ public class Carte {
 		return getSymbol() + " de " + getCouleur();
 	}
 
-	public static ArrayList<Carte> convertToCarte(String main) {
+	public static ArrayList<Carte> convertToCarte(String main) throws Exception {
 
 		ArrayList<Carte> mainCartes = new ArrayList<Carte>();
 
 		String[] cartes = main.split(" ");
 
 		if (cartes.length > Jeu.maxCarte) {
-			/* TODO exception "trop de carte"} */}
+			throw new Exception(new Exception("Trop de cartes"));
+		}
 
 		for (String carte : cartes) {
 			if (carte.length() > 4 || carte.length() < 3) {
-				/* TODO exception "pas une carte"} */}
-				mainCartes.add(new Carte(carte));
+				throw new Exception(new Exception("Carte \"" + carte + "\" invalide"));
+			}
+			if(mainCartes.contains(new Carte(carte))) {
+				throw new Exception(new Exception("Cette carte est d\u00e8j\u00e0 dans la main du joueur"));
+			}
+			mainCartes.add(new Carte(carte));
 		}
-		System.out.println(mainCartes);
+		System.out.println(mainCartes+"\n");
 		return mainCartes;
 	}
 
-	/**
-	 * 
-	 * switch(v) { case "A" : valeur = 14; break; case "K" : valeur = 13; break;
-	 * case "Q" : valeur = 12; break; case "J" : valeur = 11; break; }
-	 * 
-	 */
 }

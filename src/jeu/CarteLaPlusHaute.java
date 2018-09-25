@@ -4,18 +4,16 @@ import java.util.ArrayList;
 
 public class CarteLaPlusHaute extends Combinaison {
 	private Carte carteHaute;
-	private static final int puissance = 0;
+	
+	public CarteLaPlusHaute() {}
 
 	public CarteLaPlusHaute(ArrayList<Carte> main) {
 		this.carteHaute = meilleureCarte(main);
+		setPuissance(1);
 	}
 
 	public Carte getCarteHaute() {
 		return this.carteHaute;
-	}
-	
-	public int getPuissance() {
-		return puissance;
 	}
 	
 	public Carte meilleureCarte(ArrayList<Carte> main) {
@@ -28,30 +26,27 @@ public class CarteLaPlusHaute extends Combinaison {
 		}
 		return carteH;
 	}
-	
-	public int compareTo(CarteLaPlusHaute c) {
-		return 0; //Il faudrait utiliser la methode meilleureCarte pour ne pas avoir a r��crire une methode
-	}
-	
-	/*
+
+	@Override
 	public int compare(ArrayList<Carte> m1, ArrayList<Carte> m2) {
-		int maxm1=0; int i1=0; int i2=0; int maxm2=0;
-		for(Carte c : m1) {
-			if (maxm1 < c.getValeur()) { maxm1 = c.getValeur(); i1 = m1.indexOf(c);}
+		Carte c1 = meilleureCarte(m1);
+		Carte c2 = meilleureCarte(m2);
+		
+		if(c1.getValeur() ==  c2.getValeur() && m1.size() > 1 && m2.size() > 1) {
+			ArrayList<Carte> nm1 = new ArrayList<Carte>(m1);
+			ArrayList<Carte> nm2 = new ArrayList<Carte>(m2);
+			
+			nm1.remove(c1);
+			nm2.remove(c2);
+			compare(nm1,nm2);
+
 		}
-		for(Carte c2 : m2) {
-			if (maxm2 < c2.getValeur()) { maxm2 = c2.getValeur(); i2=m1.indexOf(c2);}
-		}
-		if(maxm2 == maxm1) {
-			m1.remove(i1);
-			m2.remove(i2);
-			compare(m1,m2);
-		}
-		if (maxm2 > maxm1)
-			return maxm2;
-		else
-			return maxm1;
+		return c1.compareTo(c2);
 	}
-	*/
+
+	@Override
+	public int compareTo(Combinaison combi2) {
+		return Integer.compare(this.getPuissance(), combi2.getPuissance());
+	}
 
 }

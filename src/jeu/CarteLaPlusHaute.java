@@ -44,9 +44,4 @@ public class CarteLaPlusHaute extends Combinaison {
 		return c1.compareTo(c2);
 	}
 
-	@Override
-	public int compareTo(Combinaison combi2) {
-		return Integer.compare(this.getPuissance(), combi2.getPuissance());
-	}
-
 }

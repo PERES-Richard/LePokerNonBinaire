@@ -6,7 +6,7 @@ import java.util.Comparator;
 public abstract class Combinaison implements Comparable<Combinaison> {
 
 	protected int puissance;
-	protected Carte cominaisonDe;
+	protected ArrayList<Carte> combinaisonDe;
 	protected Combinaison combinaisonSuivante;
 
 	public int getPuissance() {

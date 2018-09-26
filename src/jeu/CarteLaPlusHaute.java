@@ -5,12 +5,13 @@ import java.util.ArrayList;
 public class CarteLaPlusHaute extends Combinaison {
 
 	public CarteLaPlusHaute(ArrayList<Carte> main) {
-		this.cominaisonDe = meilleureCarte(main);
+		this.combinaisonDe = new ArrayList<Carte>();
+		this.combinaisonDe.add(meilleureCarte(main));
 		this.puissance = 1;
 		if (main.size() == 1) {
 			this.combinaisonSuivante = null;
 		}else {
-			main.remove(this.cominaisonDe);
+			main.remove(this.combinaisonDe.get(0));
 			this.combinaisonSuivante = new CarteLaPlusHaute(main);
 		}
 	}
@@ -28,7 +29,7 @@ public class CarteLaPlusHaute extends Combinaison {
 
 	@Override
 	public int compareTo(Combinaison c) {
-		int comp = this.cominaisonDe.compareTo(c.cominaisonDe);
+		int comp = this.combinaisonDe.get(0).compareTo(c.combinaisonDe.get(0));
 		if(comp != 0) {
 			return comp;
 		}else if (this.combinaisonSuivante != null){

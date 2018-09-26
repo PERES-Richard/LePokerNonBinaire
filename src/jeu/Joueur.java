@@ -36,12 +36,4 @@ public class Joueur {
 		//comme �a on comparera le premier element de la liste
 
 	}
-
-	public boolean inHand(Carte carte) {		
-		for(Carte c : main)
-			if(carte.toString().equals(c.toString()))
-				return true;
-		
-		return false;
-	}
 }

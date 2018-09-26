@@ -16,10 +16,6 @@ public class Paire extends Combinaison{
 		}
   }
 
-  /*public Paire(ArrayList<Carte> main, int valeur){
-    this.cominaisonDe = getPaire(main, valeur)                pour la Double Paire
-    setPuissance(3);
-  }*/
   public static boolean isPaire(ArrayList<Carte> main) {
     int i, j, size;
 
@@ -51,17 +47,7 @@ public class Paire extends Combinaison{
           return main.get(i);
       }
     }
-      //Carte carteP;
-      /*ArrayList<Carte> temp;
-      for (Carte carteP : main){
-        temp = main;
-        main.remove(carteP);
-        for (Carte carteQ : main){
-          if(carteP.getValeur() == carteQ.getValeur())
-            return carteP.getValeur();
-        }
-      }*/
-      return null;
+    return null;
     }
 
     @Override

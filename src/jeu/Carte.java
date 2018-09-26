@@ -119,6 +119,9 @@ public class Carte implements Comparable<Carte> {
 		if (cartes.length > Jeu.maxCarte) {
 			throw new Exception(new Exception("Trop de cartes"));
 		}
+		if (cartes.length < Jeu.maxCarte) {
+            throw new Exception(new Exception("Pas assez de cartes"));
+        }
 
 		for (String carte : cartes) {
 			if (carte.length() > 4 || carte.length() < 3) {
@@ -132,7 +135,7 @@ public class Carte implements Comparable<Carte> {
 		System.out.println(mainCartes+"\n");
 		return mainCartes;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Carte) {

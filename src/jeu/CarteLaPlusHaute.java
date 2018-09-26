@@ -15,10 +15,6 @@ public class CarteLaPlusHaute extends Combinaison {
 		}
 	}
 
-	/*public Carte getCarteHaute() {
-		return this.cominaisonDe;
-	}*/
-
 	public Carte meilleureCarte(ArrayList<Carte> main) {
 		Carte carteH, carte;
 		carteH = main.get(0);

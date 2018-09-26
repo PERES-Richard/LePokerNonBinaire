@@ -69,7 +69,7 @@ public class Jeu {
 			System.out.println("Egalite");
 		}
 		else {
-			System.out.println("Le joueur " + getGagnant().getNom() + " gagne avec la main " +getGagnant().getMain());
+			System.out.println("Le joueur " + getGagnant().getNom() + " gagne avec la main " +getGagnant().getMain()); // TODO : Output chelou, gagnant premiere carte
 		}
 		sc.close();
 
@@ -87,13 +87,12 @@ public class Jeu {
 
 	public Joueur getGagnant(){
 
-		if (j1.getPuissanceTopCombinaison() > j2.getPuissanceTopCombinaison())
+		if (j1.getCombinaison().getPuissance() > j2.getCombinaison().getPuissance())
 			return j1;
-		else if(j1.getPuissanceTopCombinaison() < j2.getPuissanceTopCombinaison())
+		else if(j1.getCombinaison().getPuissance() < j2.getCombinaison().getPuissance())
 			return j2;
-		else if(j1.getPuissanceTopCombinaison() == j2.getPuissanceTopCombinaison()) {
-			Combinaison combi = j1.getCombinaison().get(0);
-			switch(combi.compare(j1.getMain(), j2.getMain())) {
+		else {
+			switch(j1.getCombinaison().compareTo(j2.getCombinaison())) {
 				case -1 :
 					return j2;
 				case 1 :

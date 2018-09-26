@@ -77,7 +77,7 @@ public class Jeu {
 
 	private boolean checkDuplicates() {
 		for(Carte c : j1.getMain())
-			if(j2.inHand(c))
+			if(j2.getMain().contains(c))
 				return true;
 		
 		return false;

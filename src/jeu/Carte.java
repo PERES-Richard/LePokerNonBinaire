@@ -132,6 +132,15 @@ public class Carte implements Comparable<Carte> {
 		System.out.println(mainCartes+"\n");
 		return mainCartes;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Carte) {
+			if(toString().equals(obj.toString()))
+				return true;
+		}
+		return false;
+	}
 
 	@Override
 	public int compareTo(Carte c2) {

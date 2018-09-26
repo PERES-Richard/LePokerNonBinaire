@@ -3,23 +3,21 @@ package jeu;
 import java.util.ArrayList;
 
 public class CarteLaPlusHaute extends Combinaison {
-	private Carte carteHaute;
 
 	public CarteLaPlusHaute(ArrayList<Carte> main) {
-		this.carteHaute = meilleureCarte(main);
+		this.cominaisonDe = meilleureCarte(main);
 		this.puissance = 1;
 		if (main.size() == 1) {
 			this.combinaisonSuivante = null;
 		}else {
-			main.remove(this.carteHaute);
+			main.remove(this.cominaisonDe);
 			this.combinaisonSuivante = new CarteLaPlusHaute(main);
 		}
-			
 	}
 
-	public Carte getCarteHaute() {
-		return this.carteHaute;
-	}
+	/*public Carte getCarteHaute() {
+		return this.cominaisonDe;
+	}*/
 
 	public Carte meilleureCarte(ArrayList<Carte> main) {
 		Carte carteH, carte;
@@ -31,11 +29,10 @@ public class CarteLaPlusHaute extends Combinaison {
 		}
 		return carteH;
 	}
-	
+
 	@Override
 	public int compareTo(Combinaison c) {
-		CarteLaPlusHaute c0 = (CarteLaPlusHaute) c; //#degeulassssssssssssssss
-		int comp = this.carteHaute.compareTo(c0.carteHaute);
+		int comp = this.cominaisonDe.compareTo(c.cominaisonDe);
 		if(comp != 0) {
 			return comp;
 		}else if (this.combinaisonSuivante != null){

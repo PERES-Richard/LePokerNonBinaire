@@ -5,11 +5,16 @@ import java.util.ArrayList;
 public class CarteLaPlusHaute extends Combinaison {
 	private Carte carteHaute;
 
-	public CarteLaPlusHaute() {}
-
 	public CarteLaPlusHaute(ArrayList<Carte> main) {
 		this.carteHaute = meilleureCarte(main);
-		setPuissance(1);
+		this.puissance = 1;
+		if (main.size() == 1) {
+			this.combinaisonSuivante = null;
+		}else {
+			main.remove(this.carteHaute);
+			this.combinaisonSuivante = new CarteLaPlusHaute(main);
+		}
+			
 	}
 
 	public Carte getCarteHaute() {
@@ -26,21 +31,16 @@ public class CarteLaPlusHaute extends Combinaison {
 		}
 		return carteH;
 	}
-
+	
 	@Override
-	public int compare(ArrayList<Carte> m1, ArrayList<Carte> m2) {
-		Carte c1 = meilleureCarte(m1);
-		Carte c2 = meilleureCarte(m2);
-
-		if(c1.getValeur() ==  c2.getValeur() && m1.size() > 1 && m2.size() > 1) {
-			ArrayList<Carte> nm1 = new ArrayList<Carte>(m1);
-			ArrayList<Carte> nm2 = new ArrayList<Carte>(m2);
-
-			nm1.remove(c1);
-			nm2.remove(c2);
-			return compare(nm1,nm2);
+	public int compareTo(Combinaison c) {
+		CarteLaPlusHaute c0 = (CarteLaPlusHaute) c; //#degeulassssssssssssssss
+		int comp = this.carteHaute.compareTo(c0.carteHaute);
+		if(comp != 0) {
+			return comp;
+		}else if (this.combinaisonSuivante != null){
+			return this.combinaisonSuivante.compareTo(c.combinaisonSuivante);
 		}
-		return c1.compareTo(c2);
+		return 0;
 	}
-
 }

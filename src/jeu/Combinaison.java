@@ -3,21 +3,22 @@ package jeu;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public abstract class Combinaison implements Comparator<ArrayList<Carte>>, Comparable<Combinaison> {
-	
-	private int puissance;
-	
+public abstract class Combinaison implements Comparable<Combinaison> {
+
+	protected int puissance;
+	protected Combinaison combinaisonSuivante;
+
 	public int getPuissance() {
 		return puissance;
 	}
 	
-	public void setPuissance(int i) {
-		this.puissance = i;
+	public static Combinaison initCombinaison(ArrayList<Carte> main) {
+		return new CarteLaPlusHaute(main);
 	}
-	
+
 	@Override
-	public int compareTo(Combinaison combi2) {
-		return Integer.compare(this.getPuissance(), combi2.getPuissance());
+	public int compareTo(Combinaison c) {
+		return Integer.compare(this.getPuissance(), c.getPuissance());
 	}
 
 }

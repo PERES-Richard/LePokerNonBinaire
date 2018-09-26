@@ -22,7 +22,7 @@ u accent = \u00f9
 
 public class Jeu {
 
-	public static final int maxCarte = 1;
+	public static final int maxCarte = 2;
 	private Joueur j1, j2;
 	private Scanner sc;
 
@@ -34,12 +34,12 @@ public class Jeu {
 
 
 		boolean reload = true;
-				
+
 		while(reload) {
-			
+
 			boolean mainJ1Valide = false;
 			boolean mainJ2Valide = false;
-			
+
 			while (!mainJ1Valide)
 				try {
 					System.out.print("Main de J1 : ");
@@ -48,8 +48,8 @@ public class Jeu {
 				} catch (Exception e) {
 					System.out.println("\n/!\\Erreur dans la saisie de carte : " + e.getMessage() + ". Recommencer la saisie.\n");
 				}
-			
-			
+
+
 			while (!mainJ2Valide)
 				try {
 					System.out.print("Main de J2 : ");
@@ -58,13 +58,13 @@ public class Jeu {
 				} catch (Exception e) {
 					System.out.println("\n/!\\Erreur dans la saisie de carte : " + e.getMessage() + ". Recommencer la saisie.\n");
 				}
-	
+
 			reload = checkDuplicates();
 			if (reload) {
 				System.out.println("Erreur, J1 et J2 ne peuvent pas avoir une carte en commun. Recommencer la saisie.\n################\n");
 			}
 		}
-		
+
 		if (getGagnant() == null) {
 			System.out.println("Egalite");
 		}
@@ -79,20 +79,20 @@ public class Jeu {
 		for(Carte c : j1.getMain())
 			if(j2.getMain().contains(c))
 				return true;
-		
+
 		return false;
 	}
-	
-	
+
+
 
 	public Joueur getGagnant(){
-		
+
 		if (j1.getPuissanceTopCombinaison() > j2.getPuissanceTopCombinaison())
 			return j1;
 		else if(j1.getPuissanceTopCombinaison() < j2.getPuissanceTopCombinaison())
 			return j2;
-		else if(j1.getPuissanceTopCombinaison() == j2.getPuissanceTopCombinaison()) {	
-			Combinaison combi = j1.getCombinaison().get(0);		
+		else if(j1.getPuissanceTopCombinaison() == j2.getPuissanceTopCombinaison()) {
+			Combinaison combi = j1.getCombinaison().get(0);
 			switch(combi.compare(j1.getMain(), j2.getMain())) {
 				case -1 :
 					return j2;

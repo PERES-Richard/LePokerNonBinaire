@@ -15,5 +15,9 @@ public abstract class Combinaison implements Comparator<ArrayList<Carte>>, Compa
 		this.puissance = i;
 	}
 	
+	@Override
+	public int compareTo(Combinaison combi2) {
+		return Integer.compare(this.getPuissance(), combi2.getPuissance());
+	}
 
 }

@@ -30,7 +30,7 @@ public class Joueur {
 	private void findCombinaison() {
 		combinaisons = new ArrayList<Combinaison>();
 		combinaisons.add(new CarteLaPlusHaute(main));		
-		Collections.reverse(combinaisons);
+		Collections.sort(combinaisons, Collections.reverseOrder());
 
 		//Ici on pourra ajouter les combinaisons dans l'ordre inverse de puissance
 		//comme �a on comparera le premier element de la liste

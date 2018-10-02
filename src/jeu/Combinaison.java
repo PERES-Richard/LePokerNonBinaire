@@ -14,6 +14,7 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 	}
 
 	public static Combinaison initCombinaison(ArrayList<Carte> main) {
+		if (Brelan.isBrelan(main)) return new Brelan(main);
 		if (Paire.isPaire(main)) return new Paire(main);
 		return new CarteLaPlusHaute(main);
 	}

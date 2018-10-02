@@ -17,20 +17,6 @@ public class Paire extends Combinaison{
 		}
 	}
 
-	public static boolean isPaire(ArrayList<Carte> main) {
-		int size;
-
-		size = main.size();
-
-		for(int i = 0; i < size-1; i++) {
-			for(int j = i+1; j < size; j++) {
-				if (main.get(i).getValeur() == main.get(j).getValeur())
-			          return true;
-			}
-		}
-		return false;
-	}
-
 	public ArrayList<Carte> getPaire(ArrayList<Carte> main){
 		int size;
 		size = main.size();

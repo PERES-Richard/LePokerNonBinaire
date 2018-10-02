@@ -1,7 +1,5 @@
 package jeu;
 
-import java.util.ArrayList;
-
 public class Carte implements Comparable<Carte> {
 
 	private int valeur;
@@ -108,32 +106,6 @@ public class Carte implements Comparable<Carte> {
 
 	public String toString() {
 		return getSymbol() + " de " + getCouleur();
-	}
-
-	public static ArrayList<Carte> convertToCarte(String main) throws Exception {
-
-		ArrayList<Carte> mainCartes = new ArrayList<Carte>();
-
-		String[] cartes = main.split(" ");
-
-		if (cartes.length > Jeu.maxCarte) {
-			throw new Exception(new Exception("Trop de cartes"));
-		}
-		if (cartes.length < Jeu.maxCarte) {
-            throw new Exception(new Exception("Pas assez de cartes"));
-        }
-
-		for (String carte : cartes) {
-			if (carte.length() > 4 || carte.length() < 3) {
-				throw new Exception(new Exception("Carte \"" + carte + "\" invalide"));
-			}
-			if(mainCartes.contains(new Carte(carte))) {
-				throw new Exception(new Exception("Cette carte est d\u00e8j\u00e0 dans la main du joueur"));
-			}
-			mainCartes.add(new Carte(carte));
-		}
-		System.out.println(mainCartes+"\n");
-		return mainCartes;
 	}
 
 	@Override

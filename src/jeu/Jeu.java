@@ -63,7 +63,7 @@ public class Jeu {
 			if (reload) {
 				System.out.println("Erreur, J1 et J2 ne peuvent pas avoir une carte en commun. Recommencer la saisie.\n################\n");
 			}
-		}
+		} //TODO : Arrêter le jeu plutot que de relancer la saisie.
 
 		if (getGagnant() == null) {
 			System.out.println("Egalite");

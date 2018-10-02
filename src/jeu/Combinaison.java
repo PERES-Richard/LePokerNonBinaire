@@ -1,7 +1,6 @@
 package jeu;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public abstract class Combinaison implements Comparable<Combinaison> {
 
@@ -13,15 +12,9 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 		return puissance;
 	}
 
-	public static Combinaison initCombinaison(ArrayList<Carte> main) {
-		if (Brelan.isBrelan(main)) return new Brelan(main);
-		if (Paire.isPaire(main)) return new Paire(main);
-		return new CarteLaPlusHaute(main);
-	}
-
 	@Override
 	public int compareTo(Combinaison c) {
-		return Integer.compare(this.getPuissance(), c.getPuissance());
+		return Integer.compare(getPuissance(), c.getPuissance());
 	}
 
 }

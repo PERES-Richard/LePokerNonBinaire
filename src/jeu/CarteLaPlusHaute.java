@@ -8,13 +8,9 @@ public class CarteLaPlusHaute extends Combinaison {
 		this.combinaisonDe = new ArrayList<Carte>();
 		this.combinaisonDe.add(meilleureCarte(main));
 		this.puissance = 1;
-		if (main.size() == 1) {
-			this.combinaisonSuivante = null;
-		}else {
-			ArrayList<Carte> clone = (ArrayList<Carte>) main.clone();
-			clone.remove(this.combinaisonDe.get(0));
-			this.combinaisonSuivante = new CarteLaPlusHaute(clone);
-		}
+		ArrayList<Carte> clone = (ArrayList<Carte>) main.clone();
+		clone.remove(this.combinaisonDe.get(0));
+		this.combinaisonSuivante = findBestComb(clone);
 	}
 
 	public Carte meilleureCarte(ArrayList<Carte> main) {
@@ -37,5 +33,9 @@ public class CarteLaPlusHaute extends Combinaison {
 			return this.combinaisonSuivante.compareTo(c.combinaisonSuivante);
 		}
 		return 0;
+	}
+	
+	public String toString() {
+		return super.toString() + "Carte la plus haute avec : " + combinaisonDe.get(0);
 	}
 }

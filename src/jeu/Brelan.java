@@ -5,15 +5,15 @@ import java.util.ArrayList;
 public class Brelan extends Combinaison{
 	
 	public Brelan(ArrayList<Carte> main){
-		this.combinaisonDe = new ArrayList<Carte>();
-		this.combinaisonDe.addAll(getBrelan(main));
+		this.combinaisonDe = getBrelan(main);
 		this.puissance = 4;
-		this.combinaisonSuivante = null; //2 brelans ne peuvent pas etre equivalent donc inutile d'instancier
+		ArrayList<Carte> clone = (ArrayList<Carte>) main.clone();
+		clone.removeAll(combinaisonDe);
+		this.combinaisonSuivante = findBestComb(clone);
 	}
 	
 	public ArrayList<Carte> getBrelan(ArrayList<Carte> main) {
-	    int  size;
-	    size = main.size();
+	    int  size = main.size();
 	    ArrayList<Carte> list = new ArrayList<Carte>();
 
 	    for (int i = 0; i < size-2; i++) {
@@ -23,6 +23,7 @@ public class Brelan extends Combinaison{
 	    				list.add(main.get(i));
 	    	          	list.add(main.get(j));
 	    	          	list.add(main.get(k));
+	    	          	System.out.println(list);
 	    	          	return list;
 	    			}
 	    		}
@@ -39,4 +40,8 @@ public class Brelan extends Combinaison{
   		}
   		return 0;
   	}
+	
+	public String toString() {
+		return super.toString() + "Brelan de " + combinaisonDe.get(0).getSymbol() + " avec les cartes " + combinaisonDe + " et comme combinaison secondaire :" + combinaisonSuivante;
+	}
 }

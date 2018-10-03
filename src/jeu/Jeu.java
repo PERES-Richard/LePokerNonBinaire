@@ -44,11 +44,11 @@ public class Jeu {
 				try {
 					System.out.print("Main de J1 : ");
 					j1 = new Joueur("J1", sc.nextLine());
+					System.out.println(j1);
 					mainJ1Valide = true;
 				} catch (Exception e) {
-					System.out.println("\n/!\\Erreur dans la saisie de carte : " + e.getMessage() + ". Recommencer la saisie.\n");
+					System.out.println("\n/!\\ Erreur dans la saisie de carte : " + e.getMessage() + ". Recommencer la saisie.\n");
 				}
-
 
 			while (!mainJ2Valide)
 				try {
@@ -56,21 +56,26 @@ public class Jeu {
 					j2 = new Joueur("J2", sc.nextLine());
 					mainJ2Valide = true;
 				} catch (Exception e) {
-					System.out.println("\n/!\\Erreur dans la saisie de carte : " + e.getMessage() + ". Recommencer la saisie.\n");
+					System.out.println("\n/!\\ Erreur dans la saisie de carte : " + e.getMessage() + ". Recommencer la saisie.\n");
 				}
 
 			reload = checkDuplicates();
 			if (reload) {
 				System.out.println("Erreur, J1 et J2 ne peuvent pas avoir une carte en commun. Recommencer la saisie.\n################\n");
 			}
-		} //TODO : Arrêter le jeu plutot que de relancer la saisie.
-
+		}
+		
+		System.out.println(j1.getCombinaison());
+		
+		/**
 		if (getGagnant() == null) {
 			System.out.println("Egalite");
 		}
 		else {
 			System.out.println("Le joueur " + getGagnant().getNom() + " gagne avec la main " +getGagnant().getMain()); // TODO : Output chelou, gagnant premiere carte
 		}
+		**/
+		
 		sc.close();
 
 	}

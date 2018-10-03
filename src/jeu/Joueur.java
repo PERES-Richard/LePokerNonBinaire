@@ -11,8 +11,10 @@ public class Joueur {
 	public Joueur(String nom, String main) throws Exception{
 		this.nom = nom;
 		setMain(main);
-		this.combinaison = initCombinaison(this.main);
-	}
+		combinaison = new Combinaison();
+		combinaison = combinaison.findBestComb(this.main);
+		System.out.println(combinaison);
+}
 
 	private void setMain(String mainstr) throws Exception{
 		this.main = new ArrayList<Carte>();
@@ -37,42 +39,7 @@ public class Joueur {
 		}
 		System.out.println(main+"\n");
 	}
-	
-	private Combinaison initCombinaison(ArrayList<Carte> main) {
-		if (isBrelan(main)) return new Brelan(main);
-		if (isPaire(main)) return new Paire(main);
-		return new CarteLaPlusHaute(main);
-	}
-	
-	private boolean isBrelan(ArrayList<Carte> main) {
-	    int  size;
-	    size = main.size();
 
-	    for (int i = 0; i < size-2; i++) {
-	    	for(int j = i + 1; j < size-1; j++) {
-	    		for(int k = j + 1; k < size; k++) {
-	    			if (main.get(i).getValeur() == main.get(j).getValeur() && main.get(j).getValeur() == main.get(k).getValeur()) {
-	    				return true;
-	    			}
-	    		}
-	    	}
-	    }
-	    return false;
-	  }
-	
-	private boolean isPaire(ArrayList<Carte> main) {
-		int size;
-
-		size = main.size();
-
-		for(int i = 0; i < size-1; i++) {
-			for(int j = i+1; j < size; j++) {
-				if (main.get(i).getValeur() == main.get(j).getValeur())
-			          return true;
-			}
-		}
-		return false;
-	}
 
 	public ArrayList<Carte> getMain() { return main; }
 	public Combinaison getCombinaison() { return combinaison; }

@@ -2,6 +2,8 @@ package testJeu;
 
 import static org.junit.Assert.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -15,8 +17,8 @@ import jeu.Jeu;
 import jeu.Joueur;
 
 public class TestJeu {
-	Jeu partie;
-	Joueur j3,j4;
+	private static Jeu partie;
+	private static Joueur j3,j4;
 
 	@Before
 	public void setUp() throws Exception {
@@ -29,15 +31,20 @@ public class TestJeu {
 
 	@Test
 	public void testSaisie() {
-		partie.lancement();
 		assertNotNull(j3.getMain());
-		assertEquals(new Carte(Couleur.Trefle, 3),j3.getMain().get(1));
-		
+		assertFalse(j3.getMain().isEmpty());
+		assertEquals(new Carte(Couleur.Carreau, 14), j3.getMain().get(0));		
 	}
 	
 	@Test
 	public void testGagnant() {
-		
+		/*String input = "ACA 4Tr ACo";
+		String input2 = "APi 4Ca ATr";
+		partie.lancement();
+		System.out
+		System.setIn(new ByteArrayInputStream(input.getBytes()));
+		System.setIn(new ByteArrayInputStream(input2.getBytes()));
+		assertEquals(null,partie.getGagnant());*/
 		
 	}
 	

@@ -67,15 +67,14 @@ public class Jeu {
 		
 		System.out.println(j1.getCombinaison());
 		
-		/**
+		
 		if (getGagnant() == null) {
 			System.out.println("Egalite");
 		}
 		else {
 			System.out.println("Le joueur " + getGagnant().getNom() + " gagne avec la main " +getGagnant().getMain()); // TODO : Output chelou, gagnant premiere carte
 		}
-		**/
-		
+				
 		sc.close();
 
 	}

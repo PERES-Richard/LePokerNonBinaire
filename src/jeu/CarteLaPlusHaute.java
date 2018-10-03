@@ -11,8 +11,9 @@ public class CarteLaPlusHaute extends Combinaison {
 		if (main.size() == 1) {
 			this.combinaisonSuivante = null;
 		}else {
-			main.remove(this.combinaisonDe.get(0));
-			this.combinaisonSuivante = new CarteLaPlusHaute(main);
+			ArrayList<Carte> clone = (ArrayList<Carte>) main.clone();
+			clone.remove(this.combinaisonDe.get(0));
+			this.combinaisonSuivante = new CarteLaPlusHaute(clone);
 		}
 	}
 

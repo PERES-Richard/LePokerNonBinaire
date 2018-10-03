@@ -11,18 +11,19 @@ public class Paire extends Combinaison{
 		if (main.size() == 2) {
 			this.combinaisonSuivante = null;
 		}else {
+			ArrayList<Carte> clone = (ArrayList<Carte>) main.clone();
 			for(int i=0; i<combinaisonDe.size(); i++)
-				main.remove(this.combinaisonDe.get(i));
-			this.combinaisonSuivante = new CarteLaPlusHaute(main);
+				clone.remove(this.combinaisonDe.get(i));
+			this.combinaisonSuivante = new CarteLaPlusHaute(clone);
 		}
 	}
 
 	public ArrayList<Carte> getPaire(ArrayList<Carte> main){
 		int size;
 		size = main.size();
-    
+
 		ArrayList<Carte> list = new ArrayList<Carte>();
-	  
+
 		for (int i = 0; i < size - 1; i++) {
 			for(int j = i+1 ; j < size; j++) {
 				if (main.get(i).getValeur() == main.get(j).getValeur()){

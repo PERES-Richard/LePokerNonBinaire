@@ -33,6 +33,8 @@ public class Combinaison implements Comparable<Combinaison> {
 				return new Carre(main);
 			if (isBrelan(main))
 				return new Brelan(main);
+			if (isDoublePaire(main))
+				return new DoublePaire(main);
 			if (isPaire(main))
 				return new Paire(main);
 			return new CarteLaPlusHaute(main);
@@ -43,6 +45,8 @@ public class Combinaison implements Comparable<Combinaison> {
 				return new Carre(main);
 			if (isBrelan(main))
 				return new Brelan(main);
+			if (isDoublePaire(main))
+				return new DoublePaire(main);
 			if (isPaire(main))
 				return new Paire(main);
 			return new CarteLaPlusHaute(main);
@@ -102,25 +106,6 @@ public class Combinaison implements Comparable<Combinaison> {
 		return false;
 	}
 
-	public boolean isDoublePaire(ArrayList<Carte> main){
-		int size = main.size();
-
-		if(size < 4)
-			return false;
-
-		int nbPaire = 0;
-
-		for (int i = 0; i < size - 1; i++) {
-			for(int j = i+1 ; j < size; j++) {
-				if (main.get(i).getValeur() == main.get(j).getValeur()) {
-          i++;
-				}
-        if (nbPaire == 2) return true;
-      }
-    }
-    return false;
-	}
-
 	public boolean isPaire(ArrayList<Carte> main) {
 
 		int size = main.size();
@@ -133,6 +118,26 @@ public class Combinaison implements Comparable<Combinaison> {
 				return true;
 		}
 		return false;
+	}
+	
+	private boolean isDoublePaire(ArrayList<Carte> main) {
+		
+		if(main.size() < 4)
+			return false;
+		
+		boolean isPaire1 = false;
+		boolean isPaire2 = false;
+
+		if((isPaire1 = isPaire(main))) {
+			Combinaison paire1 = new Paire(main);
+			
+			ArrayList<Carte> clone = (ArrayList<Carte>) main.clone();
+			clone.removeAll(paire1.getCombinaisonDe());
+
+			isPaire2 = isPaire(clone);
+		}
+
+		return isPaire1 && isPaire2;
 	}
 
 	public ArrayList<Carte> getCombinaisonDe() {

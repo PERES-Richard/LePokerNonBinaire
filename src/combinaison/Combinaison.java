@@ -3,6 +3,7 @@ package combinaison;
 import java.util.ArrayList;
 
 import jeu.Carte;
+import jeu.Couleur;
 
 public abstract class Combinaison implements Comparable<Combinaison> {
 
@@ -20,9 +21,13 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 
 		switch (size) {
 		case 5:
-			// TODO autres combi
+			// TODO isQuinteFlush
 			if (isCarre(main))
 				return new Carre(main);
+			// TODO isFull
+			if (isFlush(main))
+				return new Flush(main);
+			// TODO isQuinte
 			if (isBrelan(main))
 				return new Brelan(main);
 			if (isDoublePaire(main))
@@ -32,7 +37,6 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 			return new CarteLaPlusHaute(main);
 
 		case 4:
-			// TODO autres combi
 			if (isCarre(main))
 				return new Carre(main);
 			if (isBrelan(main))
@@ -131,6 +135,22 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 
 		return isPaire1 && isPaire2;
 	}
+	
+public static boolean isFlush(ArrayList<Carte> main) {
+		
+		if(main.size() < 5)
+			return false;
+		
+		boolean isFlush = true;
+		Couleur couleur = main.get(0).getCouleur();
+		
+		for(Carte c : main)
+			if(c.getCouleur() != couleur)
+				return false;
+		
+		return isFlush;
+	}
+	
 
 	public ArrayList<Carte> getCombinaisonDe() {
 		return combinaisonDe;

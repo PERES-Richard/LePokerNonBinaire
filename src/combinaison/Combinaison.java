@@ -4,25 +4,17 @@ import java.util.ArrayList;
 
 import jeu.Carte;
 
-public class Combinaison implements Comparable<Combinaison> {
+public abstract class Combinaison implements Comparable<Combinaison> {
 
 	protected int puissance;
 	protected ArrayList<Carte> combinaisonDe;
 	protected Combinaison combinaisonSuivante;
 
-	public Combinaison() {}
-
-	public Combinaison(int puissance, ArrayList<Carte> combinaisonDe, Combinaison combinaisonSuivante) {
-		this.puissance = puissance;
-		this.combinaisonDe = combinaisonDe;
-		this.combinaisonSuivante = combinaisonSuivante;
-	}
-
 	public int getPuissance() {
 		return puissance;
 	}
 
-	public Combinaison findBestComb(ArrayList<Carte> main) {
+	public static Combinaison findBestComb(ArrayList<Carte> main) {
 
 		int size = main.size();
 
@@ -76,7 +68,7 @@ public class Combinaison implements Comparable<Combinaison> {
 		return Integer.compare(getPuissance(), c.getPuissance());
 	}
 
-	public boolean isCarre(ArrayList<Carte> main) {
+	public static boolean isCarre(ArrayList<Carte> main) {
 
 		int size = main.size();
 		Carte c1,c2,c3,c4;
@@ -92,7 +84,7 @@ public class Combinaison implements Comparable<Combinaison> {
 		return false;
 	}
 
-	public boolean isBrelan(ArrayList<Carte> main) {
+	public static boolean isBrelan(ArrayList<Carte> main) {
 		int size = main.size();
 		Carte b1,b2,b3;
 
@@ -106,7 +98,7 @@ public class Combinaison implements Comparable<Combinaison> {
 		return false;
 	}
 
-	public boolean isPaire(ArrayList<Carte> main) {
+	public static boolean isPaire(ArrayList<Carte> main) {
 
 		int size = main.size();
 		Carte p1,p2;
@@ -120,7 +112,7 @@ public class Combinaison implements Comparable<Combinaison> {
 		return false;
 	}
 	
-	private boolean isDoublePaire(ArrayList<Carte> main) {
+	public static boolean isDoublePaire(ArrayList<Carte> main) {
 		
 		if(main.size() < 4)
 			return false;

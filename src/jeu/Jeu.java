@@ -22,7 +22,7 @@ u accent = \u00f9
 
 public class Jeu {
 
-	public static final int maxCarte = 4;
+	public static final int maxCarte = 5;
 	private Joueur j1, j2;
 	private Scanner sc;
 

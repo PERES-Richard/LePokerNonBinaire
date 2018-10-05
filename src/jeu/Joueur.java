@@ -13,8 +13,7 @@ public class Joueur {
 	public Joueur(String nom, String main) throws Exception{
 		this.nom = nom;
 		this.main = strToOrdonnateArray(main);
-		combinaison = new Combinaison();
-		combinaison = combinaison.findBestComb(this.main);
+		combinaison = Combinaison.findBestComb(this.main);
 		System.out.println(this.main);
 		System.out.println(combinaison);
 	}

@@ -1,7 +1,6 @@
 package jeu;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Joueur {
 	private String nom;
@@ -37,11 +36,13 @@ public class Joueur {
     }
 
 		for (String carte : cartes) {
-			Carte c = new Carte(carte);
 
 			if (carte.length() > 4 || carte.length() < 3) {
 				throw new Exception(new Exception("Carte \"" + carte + "\" invalide"));
 			}
+			
+			Carte c = new Carte(carte);
+			
 			if(oArray.contains(c)) {
 				throw new Exception(new Exception("Cette carte est d\u00e8j\u00e0 dans la main du joueur"));
 			}

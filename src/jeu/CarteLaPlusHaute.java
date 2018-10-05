@@ -14,14 +14,7 @@ public class CarteLaPlusHaute extends Combinaison {
 	}
 
 	public Carte meilleureCarte(ArrayList<Carte> main) {
-		Carte carteH, carte;
-		carteH = main.get(0);
-		for (int i=1; i<main.size(); i++) {
-			carte = main.get(i);
-			if (carteH.getValeur() < carte.getValeur())
-				carteH = carte;
-		}
-		return carteH;
+		return main.get(0);
 	}
 
 	@Override

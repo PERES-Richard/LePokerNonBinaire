@@ -67,20 +67,18 @@ public class Combinaison implements Comparable<Combinaison> {
 	}
 
 	public boolean isBrelan(ArrayList<Carte> main) {
-	    int  size = main.size();
-
-	    if(size<3)
-	    	return false;
-
-	    for (int i = 0; i < size-2; i++)
-	    	for(int j = i + 1; j < size-1; j++)
-	    		for(int k = j + 1; k < size; k++)
-	    			if (main.get(i).getValeur() == main.get(j).getValeur() && main.get(j).getValeur() == main.get(k).getValeur()) {
-	    				return true;
-	    			}
-
-	    return false;
-	  }
+		int size = main.size();
+		Carte b1,b2,b3;
+		
+		for (int i = 0; i < size-2; i++) {
+			b1 = main.get(i);
+			b2 = main.get(i+1);
+			b3 = main.get(i+2);
+			if (b1.getValeur() == b2.getValeur() && b2.getValeur() == b3.getValeur())
+				return true;
+		}
+		return false;
+	}
 
 	public boolean isDoublePaire(ArrayList<Carte> main){
 		int size = main.size();
@@ -102,16 +100,16 @@ public class Combinaison implements Comparable<Combinaison> {
 	}
 
 	public boolean isPaire(ArrayList<Carte> main) {
+		
 		int size = main.size();
-
-		if(size < 2)
-			return false;
-
-		for(int i = 0; i < size-1; i++)
-			for(int j = i+1; j < size; j++)
-				if (main.get(i).getValeur() == main.get(j).getValeur())
-					return true;
-
+		Carte p1,p2;
+		
+		for (int i = 0; i < size-1; i++) {
+			p1 = main.get(i);
+			p2 = main.get(i+1);
+			if (p1.getValeur() == p2.getValeur())
+				return true;
+		}
 		return false;
 	}
 

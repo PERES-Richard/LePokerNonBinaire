@@ -5,14 +5,34 @@ import java.util.ArrayList;
 public class Paire extends Combinaison{
 
 	public Paire(ArrayList<Carte> main){
-		this.combinaisonDe = getPaire(main);
+		this.combinaisonDe = findPaire(main);
 		this.puissance = 2;
 		ArrayList<Carte> clone = (ArrayList<Carte>) main.clone();
 		clone.removeAll(combinaisonDe);
 		this.combinaisonSuivante = findBestComb(clone);
 	}
-
-	public ArrayList<Carte> getPaire(ArrayList<Carte> main){
+	
+	public ArrayList<Carte> findPaire(ArrayList<Carte> main){
+		
+		ArrayList<Carte> paire = new ArrayList<Carte>();
+		
+		int size = main.size();
+		
+		Carte p1,p2;
+		for (int i = 0; i < size-1; i++) {
+			p1 = main.get(i);
+			p2 = main.get(i+1);
+			if (p1.getValeur() == p2.getValeur()) {
+				paire.add(p1);
+				paire.add(p2);
+				return paire;
+			}
+		}
+		return null;
+	}
+	
+	/*public ArrayList<Carte> getPaire(ArrayList<Carte> main){
+		
 		int size = main.size();
 
 		ArrayList<Carte> list = new ArrayList<Carte>();
@@ -26,7 +46,7 @@ public class Paire extends Combinaison{
 				}
 
 		return null;
-	}
+	}*/
 
     @Override
     public int compareTo(Combinaison c) {

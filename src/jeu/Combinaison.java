@@ -27,6 +27,8 @@ public class Combinaison implements Comparable<Combinaison> {
 		switch (size) {
 		case 5:
 			// TODO autres combi
+			if (isCarre(main))
+				return new Carre(main);
 			if (isBrelan(main))
 				return new Brelan(main);
 			if (isPaire(main))
@@ -35,6 +37,8 @@ public class Combinaison implements Comparable<Combinaison> {
 
 		case 4:
 			// TODO autres combi
+			if (isCarre(main))
+				return new Carre(main);
 			if (isBrelan(main))
 				return new Brelan(main);
 			if (isPaire(main))
@@ -66,10 +70,26 @@ public class Combinaison implements Comparable<Combinaison> {
 		return Integer.compare(getPuissance(), c.getPuissance());
 	}
 
+	public boolean isCarre(ArrayList<Carte> main) {
+
+		int size = main.size();
+		Carte c1,c2,c3,c4;
+
+		for (int i = 0; i < size-3; i++) {
+			c1 = main.get(i);
+			c2 = main.get(i+1);
+			c3 = main.get(i+2);
+			c4 = main.get(i+3);
+			if (c1.getValeur() == c2.getValeur() && c2.getValeur() == c3.getValeur() && c3.getValeur() == c4.getValeur())
+					return true;
+		}
+		return false;
+	}
+
 	public boolean isBrelan(ArrayList<Carte> main) {
 		int size = main.size();
 		Carte b1,b2,b3;
-		
+
 		for (int i = 0; i < size-2; i++) {
 			b1 = main.get(i);
 			b2 = main.get(i+1);
@@ -100,10 +120,10 @@ public class Combinaison implements Comparable<Combinaison> {
 	}
 
 	public boolean isPaire(ArrayList<Carte> main) {
-		
+
 		int size = main.size();
 		Carte p1,p2;
-		
+
 		for (int i = 0; i < size-1; i++) {
 			p1 = main.get(i);
 			p2 = main.get(i+1);

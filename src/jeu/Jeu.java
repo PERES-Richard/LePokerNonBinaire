@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 /** Accents
 
-e aigu = \u00e8
-e grave = \u00e9
+e grave = \u00e8
+e aigu = \u00e9
 e circonflexe = \u00ea
 a accent = \u00e0
 u accent = \u00f9
@@ -22,7 +22,7 @@ u accent = \u00f9
 
 public class Jeu {
 
-	public static final int maxCarte = 3;
+	public static final int maxCarte = 4;
 	private Joueur j1, j2;
 	private Scanner sc;
 

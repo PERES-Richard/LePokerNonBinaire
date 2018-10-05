@@ -12,7 +12,7 @@ public class Paire extends Combinaison{
 		this.combinaisonSuivante = findBestComb(clone);
 	}
 	
-	public ArrayList<Carte> findPaire(ArrayList<Carte> main){
+	private ArrayList<Carte> findPaire(ArrayList<Carte> main){
 		
 		ArrayList<Carte> paire = new ArrayList<Carte>();
 		
@@ -30,23 +30,6 @@ public class Paire extends Combinaison{
 		}
 		return null;
 	}
-	
-	/*public ArrayList<Carte> getPaire(ArrayList<Carte> main){
-		
-		int size = main.size();
-
-		ArrayList<Carte> list = new ArrayList<Carte>();
-
-		for (int i = 0; i < size - 1; i++)
-			for(int j = i+1 ; j < size; j++)
-				if (main.get(i).getValeur() == main.get(j).getValeur()) {
-					list.add(main.get(i));
-					list.add(main.get(j));
-					return list;
-				}
-
-		return null;
-	}*/
 
     @Override
     public int compareTo(Combinaison c) {

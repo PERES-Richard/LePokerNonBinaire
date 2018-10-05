@@ -12,7 +12,7 @@ public class Brelan extends Combinaison{
 		this.combinaisonSuivante = findBestComb(clone);
 	}
 
-	public ArrayList<Carte> findBrelan(ArrayList<Carte> main) {
+	private ArrayList<Carte> findBrelan(ArrayList<Carte> main) {
 		
 		ArrayList<Carte> brelan = new ArrayList<Carte>();
 		

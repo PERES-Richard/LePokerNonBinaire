@@ -1,6 +1,8 @@
-package jeu;
+package combinaison;
 
 import java.util.ArrayList;
+
+import jeu.Carte;
 
 public class Brelan extends Combinaison{
 

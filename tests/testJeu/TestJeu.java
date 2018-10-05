@@ -10,8 +10,8 @@ import java.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;
 
+import combinaison.CarteLaPlusHaute;
 import jeu.Carte;
-import jeu.CarteLaPlusHaute;
 import jeu.Couleur;
 import jeu.Jeu;
 import jeu.Joueur;

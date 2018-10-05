@@ -2,6 +2,8 @@ package jeu;
 
 import java.util.ArrayList;
 
+import combinaison.Combinaison;
+
 public class Joueur {
 	private String nom;
 	private ArrayList<Carte> main;

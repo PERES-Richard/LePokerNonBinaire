@@ -27,15 +27,25 @@ public class Joueur {
 		ArrayList<Carte> oArray = new ArrayList<Carte>();
 
 		String[] cartes = mainstr.split(" ");
+		
+		ArrayList<String> arrCartes = new ArrayList<String>();
 
-		if (cartes.length > Jeu.maxCarte) {
+		for(String ca: cartes) {
+			String ct = ca.replaceAll(" ", "");
+			ct = ct.replaceAll("\t", "");
+			
+			if(!ct.isEmpty())
+				arrCartes.add(ct);
+		}
+		
+		if (arrCartes.size() > Jeu.maxCarte) {
 			throw new Exception(new Exception("Trop de cartes"));
 		}
-		else if (cartes.length < Jeu.maxCarte) {
+		else if (arrCartes.size() < Jeu.maxCarte) {
       throw new Exception(new Exception("Pas assez de cartes"));
     }
 
-		for (String carte : cartes) {
+		for (String carte : arrCartes) {
 
 			if (carte.length() > 4 || carte.length() < 3) {
 				throw new Exception(new Exception("Carte \"" + carte + "\" invalide"));

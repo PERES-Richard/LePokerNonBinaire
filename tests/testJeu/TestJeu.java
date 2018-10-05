@@ -2,15 +2,9 @@ package testJeu;
 
 import static org.junit.Assert.*;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import org.junit.Before;
 import org.junit.Test;
 
-import combinaison.CarteLaPlusHaute;
 import jeu.Carte;
 import jeu.Couleur;
 import jeu.Jeu;
@@ -25,9 +19,9 @@ public class TestJeu {
 		partie = new Jeu();
 		
 		
-		j3 = new Joueur("J1", "ACA 3tr VCo 2Pi");
-		j4 = new Joueur("J2", "Aca APi ACo 2Pi");
-		j5 = new Joueur("test", "9Pi 9Tr 9CO 9Ca");
+		j3 = new Joueur("J1", "ACA 3tr VCo 2Pi 4tr");
+		j4 = new Joueur("J2", "Aca APi ACo 2Pi 4tr");
+		j5 = new Joueur("test", "9Pi 9Tr 9CO 9Ca 4tr");
 	}
 
 	@Test
@@ -39,21 +33,9 @@ public class TestJeu {
 	
 	@Test
 	public void testGagnant() {
-		/*String input = "ACA 4Tr ACo";
-		String input2 = "APi 4Ca ATr";
-		partie.lancement();
-		System.out
-		System.setIn(new ByteArrayInputStream(input.getBytes()));
-		System.setIn(new ByteArrayInputStream(input2.getBytes()));
-		assertEquals(null,partie.getGagnant());*/
+		assertEquals(j4,partie.getGagnant(j3, j4));
 		
-	}
-	
-	@Test
-	public void testCombinaison() {
-		assertEquals(1,j3.getCombinaison().getPuissance());
-		assertEquals(4,j4.getCombinaison().getPuissance());
-		assertEquals(8,j5.getCombinaison().getPuissance());
+		
 	}
 
 }

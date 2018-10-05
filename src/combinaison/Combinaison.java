@@ -21,7 +21,8 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 
 		switch (size) {
 		case 5:
-			// TODO isQuinteFlush
+			if (isQuinteFlush(main))
+				return new QuinteFlush(main);
 			if (isCarre(main))
 				return new Carre(main);
 			// TODO isFull
@@ -149,6 +150,20 @@ public static boolean isFlush(ArrayList<Carte> main) {
 				return false;
 		
 		return isFlush;
+	}
+
+	public static boolean isQuinteFlush(ArrayList<Carte> main) {
+		if(main.size() < 5)
+			return false;
+		
+		for(int i = 0; i <main.size() - 1; i++) {
+			if(!main.get(i).getCouleur().equals(main.get(0).getCouleur()))
+				return false;
+			if(main.get(i+1).getValeur() != main.get(i).getValeur() -1)
+				return false;
+			
+		}
+		return true;	
 	}
 	
 

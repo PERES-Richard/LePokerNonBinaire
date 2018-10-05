@@ -16,6 +16,7 @@ public class TestCombinaisons {
 	Joueur jBrelan1,jBrelan2;
 	Joueur j8,j9;
 	Joueur jCarre1, jCarre2;
+	Joueur jQFlush1, jQFlush2, jQFlush3, jQFlush4;
 
 	@Before
 	public void setUp() throws Exception {
@@ -37,6 +38,12 @@ public class TestCombinaisons {
 		
 		jCarre1 = new Joueur("test", "9Pi 9Tr 9CO 9Ca 8ca");
 		jCarre2 = new Joueur("test", "4Pi 4Tr 4CO 4Ca 8ca");
+		
+		jQFlush1 = new Joueur("test", "APi DPi RPi VPi 10Pi");
+		jQFlush2 = new Joueur("test", "9Co DCo RCo VCo 10Co");
+		jQFlush3 = new Joueur("test", "APi DTr RPi VPi 10Pi");
+		jQFlush4 = new Joueur("test", "ATr DTr RTr VTr 10Tr");
+		
 	}
 
 	@Test
@@ -93,6 +100,18 @@ public class TestCombinaisons {
 		assertEquals(new Carte(Couleur.Coeur,9),jCarre1.getCombinaison().getCombinaisonDe().get(2));
 		
 		assertEquals(1,jCarre1.getCombinaison().compareTo(jCarre2.getCombinaison()));
+	}
+	
+	@Test
+	public void testQuinteFlush() {
+		assertTrue(Combinaison.isQuinteFlush(jQFlush1.getMain()));
+		assertFalse(Combinaison.isQuinteFlush(jQFlush3.getMain()));
+		assertNull(jQFlush1.getCombinaison().getCombinaisonSuivante());
+		assertNotNull(jQFlush3.getCombinaison().getCombinaisonSuivante());
+		assertEquals(jQFlush1, partie.getGagnant(jQFlush1, jQFlush2));
+		assertEquals(null, partie.getGagnant(jQFlush1, jQFlush4));
+		assertEquals(new Carte(Couleur.Coeur,13), jQFlush2.getCombinaison().getCombinaisonDe().get(0));
+
 	}
 
 }

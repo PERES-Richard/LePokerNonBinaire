@@ -67,13 +67,14 @@ public class Carte implements Comparable<Carte> {
 	public void setCouleurFromStr(String couleur, String carte) throws Exception {
 		if(couleur.equalsIgnoreCase("pi"))
 			this.couleur = Couleur.Pique;
-		if(couleur.equalsIgnoreCase("ca"))
+		else if(couleur.equalsIgnoreCase("ca"))
 			this.couleur = Couleur.Carreau;
-		if(couleur.equalsIgnoreCase("co"))
+		else if(couleur.equalsIgnoreCase("co"))
 			this.couleur = Couleur.Coeur;
-		if(couleur.equalsIgnoreCase("tr"))
+		else if(couleur.equalsIgnoreCase("tr"))
 			this.couleur = Couleur.Trefle;
-		else throw new Exception(new Exception("Carte \"" + carte + "\" invalide : Couleur \"" + couleur + "\" incorrect"));
+		else 
+			throw new Exception(new Exception("Carte \"" + carte + "\" invalide : Couleur \"" + couleur + "\" incorrect"));
 	}
 
 	/**

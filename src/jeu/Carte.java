@@ -1,5 +1,7 @@
 package jeu;
 
+import java.util.Comparator;
+
 /**
  * Objet représentant une carte à jouer avec une Valeur (int entre 2 et 14) et une Couleur
  * 
@@ -59,6 +61,7 @@ public class Carte implements Comparable<Carte> {
 	 * 
 	 * @param couleur Couleur de a carte
 	 * @param carte Carte entière (pour gestion d'exception)
+	 * 
 	 * @throws Exception Envoi une exception si la couleur est invalide
 	 */
 	public void setCouleurFromStr(String couleur, String carte) throws Exception {
@@ -78,6 +81,7 @@ public class Carte implements Comparable<Carte> {
 	 * 
 	 * @param valeur Valeur de la carte
 	 * @param carte Carte entière (pour gestion d'exception)
+	 * 
 	 * @throws Exception Envoi une exception si la valeur est invalide
 	 */
 	public void setValeurFromStr(String valeur, String carte) throws Exception {

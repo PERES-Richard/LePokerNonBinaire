@@ -66,7 +66,6 @@ public class Combinaison implements Comparable<Combinaison> {
 		return Integer.compare(getPuissance(), c.getPuissance());
 	}
 
-
 	public boolean isBrelan(ArrayList<Carte> main) {
 	    int  size = main.size();
 

@@ -36,7 +36,7 @@ public class DoublePaire extends Combinaison {
   		}
   		else if(combinaisonDe.get(0).compareTo(c.combinaisonDe.get(0)) == 0){
   			if(combinaisonDe.get(3).compareTo(c.combinaisonDe.get(3)) == 0)
-  					return 0;
+  					return combinaisonSuivante.compareTo(c.combinaisonSuivante);
   			return combinaisonDe.get(3).compareTo(c.combinaisonDe.get(3));
   		}
   		else return -1;

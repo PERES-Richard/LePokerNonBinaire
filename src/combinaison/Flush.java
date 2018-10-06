@@ -3,7 +3,6 @@ package combinaison;
 import java.util.ArrayList;
 
 import jeu.Carte;
-import jeu.Couleur;
 
 public class Flush extends Combinaison{
 
@@ -17,7 +16,10 @@ public class Flush extends Combinaison{
 
 	@Override
   	public int compareTo(Combinaison c) {
-  		return combinaisonDe.get(0).compareTo(c.combinaisonDe.get(0));
+		for(int i=0; i<combinaisonDe.size(); i++)
+			if(combinaisonDe.get(i).compareTo(c.combinaisonDe.get(i)) != 0)
+				return combinaisonDe.get(i).compareTo(c.combinaisonDe.get(i));
+		return 0;
   	}
 
 	public String toString() {

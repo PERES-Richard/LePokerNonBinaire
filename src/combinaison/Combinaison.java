@@ -105,7 +105,7 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 
 	public static boolean isDoublePaire(ArrayList<Carte> main) {
 
-		/*if(main.size() < 4)
+		if(main.size() < 4)
 			return false;
 
 		boolean isPaire1 = false;
@@ -120,22 +120,15 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 			isPaire2 = isPaire(clone);
 		}
 
-		return isPaire1 && isPaire2;*/
-		
-		if(main.size() < 4)
-			return false;
-
-		if (isPaire(main)) {
-			Combinaison paire = new Paire(main);
-			if (isPaire(main,paire.getCombinaisonDe().get(0).getValeur())) {
-				return true;
-			}
-		}
-		return false;
+		return isPaire1 && isPaire2;
 	}
 
 	public static boolean isBrelan(ArrayList<Carte> main) {
 		int size = main.size();
+		
+		if(main.size() < 3)
+			return false;
+		
 		Carte b1,b2,b3;
 
 		for (int i = 0; i < size-2; i++) {

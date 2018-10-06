@@ -35,15 +35,15 @@ public class TestCombinaisons {
 
 		j8 = new Joueur("test", "9Pi 9Tr 5CO 5Ca 8ca");
 		//j9 = new Joueur("test", "9Pi 9Tr ACO ACa 8ca");
-		
+
 		jCarre1 = new Joueur("test", "9Pi 9Tr 9CO 9Ca 8ca");
 		jCarre2 = new Joueur("test", "4Pi 4Tr 4CO 4Ca 8ca");
-		
+
 		jQFlush1 = new Joueur("test", "APi DPi RPi VPi 10Pi");
 		jQFlush2 = new Joueur("test", "9Co DCo RCo VCo 10Co");
 		jQFlush3 = new Joueur("test", "APi DTr RPi VPi 10Pi");
 		jQFlush4 = new Joueur("test", "ATr DTr RTr VTr 10Tr");
-		
+
 	}
 
 	@Test
@@ -95,13 +95,13 @@ public class TestCombinaisons {
 		assertTrue(jCarre1.getCombinaison().isCarre(jCarre1.getMain()));
 		assertTrue(jCarre1.getCombinaison().isBrelan(jCarre1.getMain()));
 		assertTrue(jCarre1.getCombinaison().isPaire(jCarre1.getMain()));
-		
+
 		assertEquals(new Carte(Couleur.Pique,9),jCarre1.getCombinaison().getCombinaisonDe().get(0));
 		assertEquals(new Carte(Couleur.Coeur,9),jCarre1.getCombinaison().getCombinaisonDe().get(2));
-		
+
 		assertEquals(1,jCarre1.getCombinaison().compareTo(jCarre2.getCombinaison()));
 	}
-	
+
 	@Test
 	public void testQuinteFlush() {
 		assertTrue(Combinaison.isQuinteFlush(jQFlush1.getMain()));

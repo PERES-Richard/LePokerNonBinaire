@@ -4,9 +4,9 @@ import java.util.Comparator;
 
 /**
  * Objet représentant une carte à jouer avec une Valeur (int entre 2 et 14) et une Couleur
- * 
+ *
  * @see Couleur
- * 
+ *
  * @author <a href="mailto:Armand.BOULANGER@etu.univ-cotedazur.fr">Armand BOULANGER</a>
  * @author <a href="mailto:Sacha.CARNIERE@etu.univ-cotedazur.fr">Sacha CARNIERE</a>
  * @author <a href="mailto:Sylvain.MASIA@etu.univ-cotedazur.fr">Sylvain MASIA</a>
@@ -20,9 +20,9 @@ public class Carte implements Comparable<Carte> {
 
 	/**
 	 * Instancie une carte avec une Couleur et une valeur (int)
-	 * 
+	 *
 	 * @see Couleur
-	 * 
+	 *
 	 * @param couleur Couleur de la carte
 	 * @param valeur Valeur de la carte
 	 */
@@ -33,10 +33,10 @@ public class Carte implements Comparable<Carte> {
 
 	/**
 	 * Instancie une carte avec une Couleur (String) et une valeur (String)
-	 * 
+	 *
 	 * @param couleur Couleur de la carte
 	 * @param valeur Valeur de la carte
-	 * 
+	 *
 	 * @throws Exception Renvoi une exception si la valeur et/ou la couleur n'est pas valide
 	 */
 	public Carte(String valeur, String couleur) throws Exception {
@@ -46,22 +46,22 @@ public class Carte implements Comparable<Carte> {
 
 	/**
 	 * Instancie une carte avec une Couleur et une valeur (1 seule String)
-	 * 
+	 *
 	 * @param main Couleur et Valeur de la carte
-	 * 
+	 *
 	 * @throws Exception Renvoi une exception si la valeur et/ou la couleur n'est pas valide
 	 */
 	public Carte(String main) throws Exception {
 		setCouleurFromStr(main.substring(main.length() - 2, main.length()), main);
 		setValeurFromStr(main.substring(0, main.length() - 2), main);
 	}
-	
+
 	/**
 	 * Instancie la couleur de la carte depuis une String
-	 * 
+	 *
 	 * @param couleur Couleur de a carte
 	 * @param carte Carte entière (pour gestion d'exception)
-	 * 
+	 *
 	 * @throws Exception Envoi une exception si la couleur est invalide
 	 */
 	public void setCouleurFromStr(String couleur, String carte) throws Exception {
@@ -73,16 +73,16 @@ public class Carte implements Comparable<Carte> {
 			this.couleur = Couleur.Coeur;
 		else if(couleur.equalsIgnoreCase("tr"))
 			this.couleur = Couleur.Trefle;
-		else 
+		else
 			throw new Exception(new Exception("Carte \"" + carte + "\" invalide : Couleur \"" + couleur + "\" incorrect"));
 	}
 
 	/**
 	 * Instancie la valeur de la carte depuis une String
-	 * 
+	 *
 	 * @param valeur Valeur de la carte
 	 * @param carte Carte entière (pour gestion d'exception)
-	 * 
+	 *
 	 * @throws Exception Envoi une exception si la valeur est invalide
 	 */
 	public void setValeurFromStr(String valeur, String carte) throws Exception {
@@ -113,7 +113,7 @@ public class Carte implements Comparable<Carte> {
 
 			try {
 				v = Integer.parseInt(valeur);
-				
+
 			}
 			// Pas un entier valide donc peut etre une figure
 			catch (NumberFormatException e) {
@@ -126,7 +126,7 @@ public class Carte implements Comparable<Carte> {
 				if(valeur.equalsIgnoreCase("A"))
 					v = 14;
 			}
-			
+
 			// Si ce n'est pas un entier valide ni une figure c'est une valeur incorrecte
 			if (v == 1) {
 				throw new Exception(new Exception("Carte \"" + carte + "\" invalide : Valeur \"" + valeur + "\" incorrect"));
@@ -134,10 +134,10 @@ public class Carte implements Comparable<Carte> {
 			else this.valeur = v;
 		}
 	}
-	
-	
+
+
 	// Getters et Setters
-	
+
 	public int getValeur() { return valeur; }
 	public void setValeur(int valeur) { this.valeur = valeur; }
 	public Couleur getCouleur() { return couleur; }
@@ -159,7 +159,7 @@ public class Carte implements Comparable<Carte> {
 
 
 	// Override du toString() et des méthodes de comparaison equals() et compareTo()
-	
+
 	@Override
 	public String toString() { return getSymbol() + " de " + getCouleur(); }
 	@Override

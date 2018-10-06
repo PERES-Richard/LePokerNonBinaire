@@ -26,9 +26,10 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 			if (isCarre(main))
 				return new Carre(main);
 			// TODO isFull
-			if (isFlush(main))
-				return new Flush(main);
-			// TODO isQuinte
+			if (isCombiCouleur(main))
+				return new CombiCouleur(main);
+			if (isSuite(main))
+				return new Suite(main);
 			if (isBrelan(main))
 				return new Brelan(main);
 			if (isDoublePaire(main))
@@ -73,20 +74,38 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 		return Integer.compare(getPuissance(), c.getPuissance());
 	}
 
-	public static boolean isCarre(ArrayList<Carte> main) {
+	public static boolean isPaire(ArrayList<Carte> main) {
 
 		int size = main.size();
-		Carte c1,c2,c3,c4;
+		Carte p1,p2;
 
-		for (int i = 0; i < size-3; i++) {
-			c1 = main.get(i);
-			c2 = main.get(i+1);
-			c3 = main.get(i+2);
-			c4 = main.get(i+3);
-			if (c1.getValeur() == c2.getValeur() && c2.getValeur() == c3.getValeur() && c3.getValeur() == c4.getValeur())
-					return true;
+		for (int i = 0; i < size-1; i++) {
+			p1 = main.get(i);
+			p2 = main.get(i+1);
+			if (p1.getValeur() == p2.getValeur())
+				return true;
 		}
 		return false;
+	}
+
+	public static boolean isDoublePaire(ArrayList<Carte> main) {
+
+		if(main.size() < 4)
+			return false;
+
+		boolean isPaire1 = false;
+		boolean isPaire2 = false;
+
+		if((isPaire1 = isPaire(main))) {
+			Combinaison paire1 = new Paire(main);
+
+			ArrayList<Carte> clone = (ArrayList<Carte>) main.clone();
+			clone.removeAll(paire1.getCombinaisonDe());
+
+			isPaire2 = isPaire(clone);
+		}
+
+		return isPaire1 && isPaire2;
 	}
 
 	public static boolean isBrelan(ArrayList<Carte> main) {
@@ -103,69 +122,69 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 		return false;
 	}
 
-	public static boolean isPaire(ArrayList<Carte> main) {
-
+	public static boolean isSuite(ArrayList<Carte> main) {
 		int size = main.size();
-		Carte p1,p2;
 
-		for (int i = 0; i < size-1; i++) {
-			p1 = main.get(i);
-			p2 = main.get(i+1);
-			if (p1.getValeur() == p2.getValeur())
-				return true;
-		}
-		return false;
-	}
-	
-	public static boolean isDoublePaire(ArrayList<Carte> main) {
-		
-		if(main.size() < 4)
+		if (size < 5)
 			return false;
-		
-		boolean isPaire1 = false;
-		boolean isPaire2 = false;
 
-		if((isPaire1 = isPaire(main))) {
-			Combinaison paire1 = new Paire(main);
-			
-			ArrayList<Carte> clone = (ArrayList<Carte>) main.clone();
-			clone.removeAll(paire1.getCombinaisonDe());
+    	Carte c1 = main.get(0);
+    	int val = c1.getValeur();
 
-			isPaire2 = isPaire(clone);
+		for (int i = 1; i < size; i++) {
+			if (val-i != main.get(i).getValeur())
+        		return false;
 		}
-
-		return isPaire1 && isPaire2;
+		return true;
 	}
-	
-public static boolean isFlush(ArrayList<Carte> main) {
-		
+
+	public static boolean isCombiCouleur(ArrayList<Carte> main) {
+
 		if(main.size() < 5)
 			return false;
-		
-		boolean isFlush = true;
+
+		boolean isCombiCouleur = true;
 		Couleur couleur = main.get(0).getCouleur();
-		
+
 		for(Carte c : main)
 			if(c.getCouleur() != couleur)
 				return false;
-		
-		return isFlush;
+
+		return isCombiCouleur;
+	}
+
+
+
+	public static boolean isCarre(ArrayList<Carte> main) {
+
+		int size = main.size();
+		Carte c1,c2,c3,c4;
+
+		for (int i = 0; i < size-3; i++) {
+			c1 = main.get(i);
+			c2 = main.get(i+1);
+			c3 = main.get(i+2);
+			c4 = main.get(i+3);
+			if (c1.getValeur() == c2.getValeur() && c2.getValeur() == c3.getValeur() && c3.getValeur() == c4.getValeur())
+					return true;
+		}
+		return false;
 	}
 
 	public static boolean isQuinteFlush(ArrayList<Carte> main) {
 		if(main.size() < 5)
 			return false;
-		
+
 		for(int i = 0; i <main.size() - 1; i++) {
 			if(!main.get(i).getCouleur().equals(main.get(0).getCouleur()))
 				return false;
 			if(main.get(i+1).getValeur() != main.get(i).getValeur() -1)
 				return false;
-			
+
 		}
-		return true;	
+		return true;
 	}
-	
+
 
 	public ArrayList<Carte> getCombinaisonDe() {
 		return combinaisonDe;

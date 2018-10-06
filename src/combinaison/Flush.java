@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import jeu.Carte;
 import jeu.Couleur;
 
-public class CombiCouleur extends Combinaison{
+public class Flush extends Combinaison{
 
-	public CombiCouleur(ArrayList<Carte> main) {
+	public Flush(ArrayList<Carte> main) {
 		this.combinaisonDe = main;
 		this.puissance = 6;
 		ArrayList<Carte> clone = (ArrayList<Carte>) main.clone();

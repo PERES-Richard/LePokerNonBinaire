@@ -26,8 +26,8 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 			if (isCarre(main))
 				return new Carre(main);
 			// TODO isFull
-			if (isCombiCouleur(main))
-				return new CombiCouleur(main);
+			if (isFlush(main))
+				return new Flush(main);
 			if (isSuite(main))
 				return new Suite(main);
 			if (isBrelan(main))
@@ -138,19 +138,19 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 		return true;
 	}
 
-	public static boolean isCombiCouleur(ArrayList<Carte> main) {
+	public static boolean isFlush(ArrayList<Carte> main) {
 
 		if(main.size() < 5)
 			return false;
 
-		boolean isCombiCouleur = true;
+		boolean isFlush = true;
 		Couleur couleur = main.get(0).getCouleur();
 
 		for(Carte c : main)
 			if(c.getCouleur() != couleur)
 				return false;
 
-		return isCombiCouleur;
+		return isFlush;
 	}
 
 

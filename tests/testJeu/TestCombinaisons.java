@@ -107,7 +107,7 @@ public class TestCombinaisons {
 		assertTrue(Combinaison.isQuinteFlush(jQFlush1.getMain()));
 		assertFalse(Combinaison.isQuinteFlush(jQFlush3.getMain()));
 		assertNull(jQFlush1.getCombinaison().getCombinaisonSuivante());
-		assertNotNull(jQFlush3.getCombinaison().getCombinaisonSuivante());
+		assertNull(jQFlush3.getCombinaison().getCombinaisonSuivante());
 		assertEquals(jQFlush1, partie.getGagnant(jQFlush1, jQFlush2));
 		assertEquals(null, partie.getGagnant(jQFlush1, jQFlush4));
 		assertEquals(new Carte(Couleur.Coeur,13), jQFlush2.getCombinaison().getCombinaisonDe().get(0));

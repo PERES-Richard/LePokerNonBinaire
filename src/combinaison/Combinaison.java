@@ -25,7 +25,8 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 				return new QuinteFlush(main);
 			if (isCarre(main))
 				return new Carre(main);
-			// TODO isFull
+			if (isFull(main))
+				return new Full(main);
 			if (isFlush(main))
 				return new Flush(main);
 			if (isSuite(main))
@@ -87,10 +88,24 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 		}
 		return false;
 	}
+	
+	public static boolean isPaire(ArrayList<Carte> main, int valeurExclue) {
+
+		int size = main.size();
+		Carte p1,p2;
+
+		for (int i = 0; i < size-1; i++) {
+			p1 = main.get(i);
+			p2 = main.get(i+1);
+			if (p1.getValeur() != valeurExclue && p1.getValeur() == p2.getValeur())
+				return true;
+		}
+		return false;
+	}
 
 	public static boolean isDoublePaire(ArrayList<Carte> main) {
 
-		if(main.size() < 4)
+		/*if(main.size() < 4)
 			return false;
 
 		boolean isPaire1 = false;
@@ -105,7 +120,18 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 			isPaire2 = isPaire(clone);
 		}
 
-		return isPaire1 && isPaire2;
+		return isPaire1 && isPaire2;*/
+		
+		if(main.size() < 4)
+			return false;
+
+		if (isPaire(main)) {
+			Combinaison paire = new Paire(main);
+			if (isPaire(main,paire.getCombinaisonDe().get(0).getValeur())) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public static boolean isBrelan(ArrayList<Carte> main) {
@@ -121,7 +147,7 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 		}
 		return false;
 	}
-
+	
 	public static boolean isSuite(ArrayList<Carte> main) {
 		int size = main.size();
 
@@ -153,8 +179,20 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 		return isFlush;
 	}
 
+	public static boolean isFull(ArrayList<Carte> main) {
 
+		if(main.size() < 5)
+			return false;
 
+		if (isBrelan(main)) {
+			Combinaison brelan = new Brelan(main);
+			if (isPaire(main,brelan.getCombinaisonDe().get(0).getValeur())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public static boolean isCarre(ArrayList<Carte> main) {
 
 		int size = main.size();

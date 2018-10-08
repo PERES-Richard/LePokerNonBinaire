@@ -148,10 +148,15 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 			return false;
 
     	Carte c1 = main.get(0);
-    	int val = c1.getValeur();
+    	int val1 = c1.getValeur();
+    	Carte c2 = main.get(1);
+    	int val2 = c2.getValeur();
+    	
+    	if (val1 == 14 && val2 == 5)
+        	val1 = 6;
 
 		for (int i = 1; i < size; i++) {
-			if (val-i != main.get(i).getValeur())
+			if (val1-i != main.get(i).getValeur())
         		return false;
 		}
 		return true;

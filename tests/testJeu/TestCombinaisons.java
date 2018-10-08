@@ -13,8 +13,10 @@ public class TestCombinaisons {
 	Jeu partie;
 	Joueur jCarteHaute1,jCarteHaute2,jCarteHaute3;
 	Joueur jPaire1,jPaire2,jPaire3;
+	Joueur jDoublePaire1,jDoublePaire2;
 	Joueur jBrelan1,jBrelan2;
-	Joueur j8,j9;
+	Joueur jSuite1,jSuite2, jNoSuite;
+	Joueur jFull1,jFull2;
 	Joueur jCarre1, jCarre2;
 	Joueur jQFlush1, jQFlush2, jQFlush3, jQFlush4;
 
@@ -29,12 +31,19 @@ public class TestCombinaisons {
 		jPaire1 = new Joueur("test", "3Pi 5Tr 3CO 2Pi 8ca");
 		jPaire2 = new Joueur("test", "7Pi 9Tr 9CO 2Pi 8ca");
 		jPaire3 = new Joueur("test", "3tr 5Tr 3ca 2Pi 8ca");
+		
+		jDoublePaire1 = new Joueur("test", "9Pi 9Tr 5CO 5Ca 8ca");
+		jDoublePaire2 = new Joueur("test", "9Pi 9Tr ACO ACa 8ca");
 
 		jBrelan1 = new Joueur("test", "3Pi 3Tr 3CO 2Pi 8ca");
 		jBrelan2 = new Joueur("test", "9Pi 9Tr 9CO VPi 8ca");
-
-		j8 = new Joueur("test", "9Pi 9Tr 5CO 5Ca 8ca");
-		//j9 = new Joueur("test", "9Pi 9Tr ACO ACa 8ca");
+		
+		jNoSuite = new Joueur("test", "APi 2co 4pi 4co 3tr");
+		jSuite1 = new Joueur("test", "APi 2co 5pi 4co 3tr");
+		jSuite2 = new Joueur("test", "5co 8Pi 9tr 7co 6Ca");
+		
+		jFull1 = new Joueur("test", "9Pi 9Tr 5CO 5Ca 5Pi");
+		jFull2 = new Joueur("test", "9Pi 9Tr 5CO 5Ca 9ca");
 
 		jCarre1 = new Joueur("test", "9Pi 9Tr 9CO 9Ca 8ca");
 		jCarre2 = new Joueur("test", "4Pi 4Tr 4CO 4Ca 8ca");
@@ -58,8 +67,8 @@ public class TestCombinaisons {
 	@Test
 	public void testPaire() {
 
-		assertFalse(jPaire2.getCombinaison().isBrelan(jPaire2.getMain()));
-		assertTrue(jPaire2.getCombinaison().isPaire(jPaire2.getMain()));
+		assertFalse(Combinaison.isBrelan(jPaire2.getMain()));
+		assertTrue(Combinaison.isPaire(jPaire2.getMain()));
 
 		assertEquals(new Carte(Couleur.Pique,3),jPaire1.getCombinaison().getCombinaisonDe().get(0));
 		assertEquals(new Carte(Couleur.Coeur,3),jPaire1.getCombinaison().getCombinaisonDe().get(1));
@@ -67,14 +76,25 @@ public class TestCombinaisons {
 
 		assertEquals(-1,jPaire1.getCombinaison().compareTo(jPaire2.getCombinaison()));
 		assertEquals(0,jPaire1.getCombinaison().compareTo(jPaire3.getCombinaison()));
-
+	}
+	
+	@Test
+	public void testDoublePaire() {
+		assertTrue(Combinaison.isDoublePaire(jDoublePaire1.getMain()));
+		assertFalse(Combinaison.isDoublePaire(jPaire2.getMain()));
+		
+		assertEquals(new Carte(Couleur.Pique,9),jDoublePaire1.getCombinaison().getCombinaisonDe().get(0));
+		assertEquals(new Carte(Couleur.Coeur,5),jDoublePaire1.getCombinaison().getCombinaisonDe().get(2));
+		assertEquals(new Carte(Couleur.Carreau,8),jDoublePaire1.getCombinaison().getCombinaisonSuivante().getCombinaisonDe().get(0));
+		
+		assertEquals(-1,jDoublePaire1.getCombinaison().compareTo(jDoublePaire2.getCombinaison()));
 	}
 
 	@Test
 	public void testBrelan() {
 
-		assertTrue(jBrelan2.getCombinaison().isBrelan(jBrelan2.getMain()));
-		assertTrue(jBrelan2.getCombinaison().isPaire(jBrelan2.getMain()));
+		assertTrue(Combinaison.isBrelan(jBrelan2.getMain()));
+		assertTrue(Combinaison.isPaire(jBrelan2.getMain()));
 
 		assertEquals(new Carte(Couleur.Pique,3),jBrelan1.getCombinaison().getCombinaisonDe().get(0));
 		assertEquals(new Carte(Couleur.Coeur,3),jBrelan1.getCombinaison().getCombinaisonDe().get(2));
@@ -82,19 +102,36 @@ public class TestCombinaisons {
 
 		assertEquals(-1,jBrelan1.getCombinaison().compareTo(jBrelan2.getCombinaison()));
 	}
-
+	
 	@Test
-	public void testDoublePaire() {
-		assertTrue(Combinaison.isDoublePaire(j8.getMain()));
+	public void testSuite() {
 
+		assertFalse(Combinaison.isSuite(jNoSuite.getMain()));
+		
+		assertTrue(Combinaison.isSuite(jSuite1.getMain()));
+		assertTrue(Combinaison.isSuite(jSuite2.getMain()));
+
+		//assertEquals(new Carte(Couleur.Pique,14),jSuite1.getCombinaison().getCombinaisonDe().get(0));
+		//assertEquals(new Carte(Couleur.Coeur,5),jSuite1.getCombinaison().getCombinaisonDe().get(4));
+
+		//assertEquals(-1,jSuite1.getCombinaison().compareTo(jSuite2.getCombinaison()));
+	}
+	
+	@Test
+	public void testFull() {
+		assertTrue(Combinaison.isFull(jFull1.getMain()));
+		assertFalse(Combinaison.isFull(jDoublePaire1.getMain()));
+
+		assertEquals(new Carte(Couleur.Carreau,5),jFull1.getCombinaison().getCombinaisonDe().get(1));
+		assertEquals(new Carte(Couleur.Pique,9),jFull1.getCombinaison().getCombinaisonDe().get(3));
+		
+		assertEquals(-1,jFull1.getCombinaison().compareTo(jFull2.getCombinaison()));
 	}
 
 	@Test
 	public void testCarre() {
 
-		assertTrue(jCarre1.getCombinaison().isCarre(jCarre1.getMain()));
-		assertTrue(jCarre1.getCombinaison().isBrelan(jCarre1.getMain()));
-		assertTrue(jCarre1.getCombinaison().isPaire(jCarre1.getMain()));
+		assertTrue(Combinaison.isCarre(jCarre1.getMain()));
 
 		assertEquals(new Carte(Couleur.Pique,9),jCarre1.getCombinaison().getCombinaisonDe().get(0));
 		assertEquals(new Carte(Couleur.Coeur,9),jCarre1.getCombinaison().getCombinaisonDe().get(2));

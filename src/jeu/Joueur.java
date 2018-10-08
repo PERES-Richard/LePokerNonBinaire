@@ -63,7 +63,7 @@ public class Joueur {
 	 * 
 	 * @throws Exception Si la main (String) est incorrect
 	 */
-	private ArrayList<Carte> strToOrdonnateArray(String mainstr) throws Exception{
+	public static ArrayList<Carte> strToOrdonnateArray(String mainstr) throws Exception{
 		ArrayList<Carte> oArray = new ArrayList<Carte>();
 
 		String[] cartes = mainstr.split(" ");

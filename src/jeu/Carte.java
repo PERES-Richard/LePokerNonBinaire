@@ -144,7 +144,7 @@ public class Carte implements Comparable<Carte> {
 	public void setCouleur(Couleur couleur) { this.couleur = couleur; }
 	public String getSymbol() {
 		switch (getValeur()) {
-		case 14:
+		case 14: case 1:
 			return "As";
 		case 13:
 			return "Roi";

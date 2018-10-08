@@ -39,11 +39,7 @@ public class Carre extends Combinaison{
 
 	@Override
   	public int compareTo(Combinaison c) {
-  		int comp = this.combinaisonDe.get(0).compareTo(c.combinaisonDe.get(0));
-  		if(comp != 0) {
-  			return comp;
-  		}
-  		return 0;
+  		return this.combinaisonDe.get(0).compareTo(c.combinaisonDe.get(0));
   	}
 
 	public String toString() {

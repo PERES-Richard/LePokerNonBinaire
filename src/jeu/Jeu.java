@@ -3,17 +3,6 @@ package jeu;
 import java.util.Scanner;
 
 
-/* Accents
-
-e grave = \u00e8
-e aigu = \u00e9
-e circonflexe = \u00ea
-a accent = \u00e0
-u accent = \u00f9
-
- */
-
-
 /**
  * Sert à lancer une partie de poker à 2 joueurs. Il faut dans un premier temps entrer la main du joueur 1 dans la console puis celle du joueur 2.
  * Le gagnant est décidé après avoir rentré les 2 mains.

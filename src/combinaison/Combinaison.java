@@ -208,14 +208,7 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 		if(main.size() < 5)
 			return false;
 
-		for(int i = 0; i <main.size() - 1; i++) {
-			if(!main.get(i).getCouleur().equals(main.get(0).getCouleur()))
-				return false;
-			if(main.get(i+1).getValeur() != main.get(i).getValeur() -1)
-				return false;
-
-		}
-		return true;
+		return isFlush(main) && isSuite(main);
 	}
 
 

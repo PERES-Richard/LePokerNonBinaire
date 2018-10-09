@@ -14,6 +14,8 @@ Ce projet s'inscrit dans le parcours ingénieur informatique (1ère année) de l
 
 Les specs de notre projet, _Le Poker Non Binaire_, sont mises à jour régulièrement et disponible à [cette adresse](https://docs.google.com/spreadsheets/d/1YUtYYEhYPx4xir736oF4q6jxh211Lz6jKK9BI8-Sl-g/edit?usp=sharing "Fichier Specs Poker Non Binaire").
 
-
+Dans un terminal unix :
+Compilation : javac -d build/classes src/jeu/* src/combinaison/*
+Execution : java -cp build/classes jeu.Jeu
 
 PS : Du fait d'obscures pratiques, les commits de PERES Richard se sont fait avec le compte "riritueur" (son compte "perso") au lieu du compte "PERES-Richard". Son Eclipse a effectué les commits avec l'utilisateur "riritueur" par défaut et il ne s'en ai pas aperçu à temps.

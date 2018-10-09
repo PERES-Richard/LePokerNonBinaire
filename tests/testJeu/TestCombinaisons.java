@@ -15,7 +15,7 @@ public class TestCombinaisons {
 	Joueur jPaire1,jPaire2,jPaire3;
 	Joueur jDoublePaire1,jDoublePaire2;
 	Joueur jBrelan1,jBrelan2;
-	Joueur jSuite1,jSuite2, jNoSuite;
+	Joueur jSuite1,jSuite2,jSuite3, jNoSuite1,jNoSuite2;
 	Joueur jFull1,jFull2;
 	Joueur jCarre1, jCarre2;
 	Joueur jQFlush1, jQFlush2, jQFlush3, jQFlush4;
@@ -38,9 +38,11 @@ public class TestCombinaisons {
 		jBrelan1 = new Joueur("test", "3Pi 3Tr 3CO 2Pi 8ca");
 		jBrelan2 = new Joueur("test", "9Pi 9Tr 9CO VPi 8ca");
 		
-		jNoSuite = new Joueur("test", "APi 2co 4pi 4co 3tr");
+		jNoSuite1 = new Joueur("test", "APi 2co 4pi 4co 3tr");
+		jNoSuite2 = new Joueur("test", "APi RCo DCa 2Tr VTr");
 		jSuite1 = new Joueur("test", "APi 2co 5pi 4co 3tr");
-		jSuite2 = new Joueur("test", "5co 8Pi 9tr 7co 6Ca");
+		jSuite2 = new Joueur("test", "6Pi 2co 5pi 4co 3tr");
+		jSuite3 = new Joueur("test", "APi RCo DCa 10Tr VTr");
 		
 		jFull1 = new Joueur("test", "9Pi 9Tr 5CO 5Ca 5Pi");
 		jFull2 = new Joueur("test", "9Pi 9Tr 5CO 5Ca 9ca");
@@ -106,15 +108,18 @@ public class TestCombinaisons {
 	@Test
 	public void testSuite() {
 
-		assertFalse(Combinaison.isSuite(jNoSuite.getMain()));
+		assertFalse(Combinaison.isSuite(jNoSuite1.getMain()));
+		assertFalse(Combinaison.isSuite(jNoSuite2.getMain()));
 		
 		assertTrue(Combinaison.isSuite(jSuite1.getMain()));
 		assertTrue(Combinaison.isSuite(jSuite2.getMain()));
+		assertTrue(Combinaison.isSuite(jSuite3.getMain()));
 
-		//assertEquals(new Carte(Couleur.Pique,14),jSuite1.getCombinaison().getCombinaisonDe().get(0));
-		//assertEquals(new Carte(Couleur.Coeur,5),jSuite1.getCombinaison().getCombinaisonDe().get(4));
+		assertEquals(new Carte(Couleur.Pique,5),jSuite1.getCombinaison().getCombinaisonDe().get(0));
+		assertEquals(new Carte(Couleur.Pique,1),jSuite1.getCombinaison().getCombinaisonDe().get(4));
 
-		//assertEquals(-1,jSuite1.getCombinaison().compareTo(jSuite2.getCombinaison()));
+		assertEquals(-1,jSuite1.getCombinaison().compareTo(jSuite2.getCombinaison()));
+		assertEquals(-1,jSuite1.getCombinaison().compareTo(jSuite3.getCombinaison()));
 	}
 	
 	@Test

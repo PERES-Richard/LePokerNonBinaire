@@ -6,8 +6,8 @@ import jeu.Carte;
 
 public class CarteLaPlusHaute extends Combinaison {
 
-	public CarteLaPlusHaute(ArrayList<Carte> main) {
-		this.combinaisonDe = new ArrayList<Carte>();
+	CarteLaPlusHaute(ArrayList<Carte> main) {
+		this.combinaisonDe = new ArrayList<>();
 		this.combinaisonDe.add(meilleureCarte(main));
 		this.puissance = 1;
 		ArrayList<Carte> clone = (ArrayList<Carte>) main.clone();
@@ -15,7 +15,7 @@ public class CarteLaPlusHaute extends Combinaison {
 		this.combinaisonSuivante = findBestComb(clone);
 	}
 
-	public Carte meilleureCarte(ArrayList<Carte> main) {
+	private Carte meilleureCarte(ArrayList<Carte> main) {
 		return main.get(0);
 	}
 

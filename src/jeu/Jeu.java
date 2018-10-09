@@ -3,7 +3,7 @@ package jeu;
 import java.util.Scanner;
 
 
-/** Accents
+/* Accents
 
 e grave = \u00e8
 e aigu = \u00e9
@@ -30,10 +30,10 @@ u accent = \u00f9
  */
 public class Jeu {
 
-	/*
+	/**
 	 *  Indique le nombre de carte de chaque joueur pour la partie
 	 */
-	public static final int nbCarte = 5;
+	static final int nbCarte = 5;
 	
 	/**
 	 * Joueurs de la partie
@@ -41,20 +41,18 @@ public class Jeu {
 	 * @see Joueur
 	 */
 	private Joueur j1, j2;
-	
-	/**
-	 * Scanner lisant les mains des 2 joueurs sur la console
-	 * 
-	 * @see Scanner
-	 */
-	private Scanner sc;
 
 	/**
 	 * Méthode principale de la classe servant à démarrer la partie
 	 */
-	public void lancement() {
+	private void lancement() {
 
-		sc = new Scanner(System.in);
+		/**
+		 * Scanner lisant les mains des 2 joueurs sur la console
+		 *
+		 * @see Scanner
+		 */
+		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Bienvenue sur le Poker Non Binaire\n");
 

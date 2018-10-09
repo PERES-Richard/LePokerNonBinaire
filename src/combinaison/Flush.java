@@ -6,7 +6,7 @@ import jeu.Carte;
 
 public class Flush extends Combinaison{
 
-	public Flush(ArrayList<Carte> main) {
+	Flush(ArrayList<Carte> main) {
 		this.combinaisonDe = main;
 		this.puissance = 6;
 		ArrayList<Carte> clone = (ArrayList<Carte>) main.clone();

@@ -5,7 +5,7 @@ import jeu.Carte;
 
 public class Suite extends Combinaison{
 
-  public Suite(ArrayList<Carte> main){
+  Suite(ArrayList<Carte> main){
 		this.combinaisonDe = findSuite(main);
 		this.puissance = 5;
 		this.combinaisonSuivante = null;

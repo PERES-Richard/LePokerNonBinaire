@@ -1,7 +1,6 @@
 package jeu;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 import combinaison.Combinaison;
@@ -63,12 +62,12 @@ public class Joueur {
 	 * 
 	 * @throws Exception Si la main (String) est incorrect
 	 */
-	public static ArrayList<Carte> strToOrdonnateArray(String mainstr) throws Exception{
-		ArrayList<Carte> oArray = new ArrayList<Carte>();
+	private static ArrayList<Carte> strToOrdonnateArray(String mainstr) throws Exception{
+		ArrayList<Carte> oArray = new ArrayList<>();
 
 		String[] cartes = mainstr.split(" ");
 		
-		ArrayList<String> arrCartes = new ArrayList<String>();
+		ArrayList<String> arrCartes = new ArrayList<>();
 
 		// Gère la présence d'un ou plusieurs espaces et/ou tabulation entre chaque carte dans la main
 		for(String ca: cartes) {
@@ -84,8 +83,8 @@ public class Joueur {
 			throw new Exception(new Exception("Trop de cartes"));
 		}
 		else if (arrCartes.size() < Jeu.nbCarte) {
-      throw new Exception(new Exception("Pas assez de cartes"));
-    }
+      		throw new Exception(new Exception("Pas assez de cartes"));
+    	}
 
 		for (String carte : arrCartes) {
 
@@ -105,10 +104,7 @@ public class Joueur {
 		}
 		
 		// Tri par ordre descroissant les cartes dans la main du joueurs
-		Collections.sort(oArray, new Comparator<Carte>() {
-	        @Override
-	        public int compare(Carte o1, Carte o2) { return o2.compareTo(o1); }
-	    });
+		oArray.sort(Comparator.reverseOrder());
 		
 		return oArray;
 	}
@@ -118,5 +114,5 @@ public class Joueur {
 	
 	public ArrayList<Carte> getMain() { return main; }
 	public Combinaison getCombinaison() { return combinaison; }
-	public String getNom() { return nom; }
+	String getNom() { return nom; }
 }

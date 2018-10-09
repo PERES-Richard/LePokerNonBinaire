@@ -6,7 +6,7 @@ import jeu.Carte;
 
 public class QuinteFlush extends Combinaison {
 	
-	public QuinteFlush(ArrayList<Carte> main) {
+	QuinteFlush(ArrayList<Carte> main) {
 		this.combinaisonDe = main;
 		this.puissance = 9;
 		this.combinaisonSuivante = null;	

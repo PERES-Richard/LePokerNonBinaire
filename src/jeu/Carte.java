@@ -1,7 +1,5 @@
 package jeu;
 
-import java.util.Comparator;
-
 /**
  * Objet représentant une carte à jouer avec une Valeur (int entre 2 et 14) et une Couleur
  *
@@ -52,7 +50,7 @@ public class Carte implements Comparable<Carte> {
 	 * @throws Exception Renvoi une exception si la valeur et/ou la couleur n'est pas valide
 	 */
 	public Carte(String main) throws Exception {
-		setCouleurFromStr(main.substring(main.length() - 2, main.length()), main);
+		setCouleurFromStr(main.substring(main.length() - 2), main);
 		setValeurFromStr(main.substring(0, main.length() - 2), main);
 	}
 
@@ -64,7 +62,7 @@ public class Carte implements Comparable<Carte> {
 	 *
 	 * @throws Exception Envoi une exception si la couleur est invalide
 	 */
-	public void setCouleurFromStr(String couleur, String carte) throws Exception {
+	private void setCouleurFromStr(String couleur, String carte) throws Exception {
 		if(couleur.equalsIgnoreCase("pi"))
 			this.couleur = Couleur.Pique;
 		else if(couleur.equalsIgnoreCase("ca"))
@@ -85,7 +83,7 @@ public class Carte implements Comparable<Carte> {
 	 *
 	 * @throws Exception Envoi une exception si la valeur est invalide
 	 */
-	public void setValeurFromStr(String valeur, String carte) throws Exception {
+	private void setValeurFromStr(String valeur, String carte) throws Exception {
 		// Si la valeur est plus longue que 2 caractères ou vide, envoi une exception
 		if (valeur.length() > 2 || valeur.length() == 0) {
 			throw new Exception(new Exception("Carte \"" + carte + "\" invalide : Valeur \"" + valeur + "\" incorrect"));
@@ -93,7 +91,7 @@ public class Carte implements Comparable<Carte> {
 
 		// Si la valeur est longue 2 caractères alors c'est obligatoirement un 10 sinon exception car valeur incorrecte
 		if (valeur.length() == 2) {
-			int v = 11;
+			int v;
 
 			try {
 				v = Integer.parseInt(valeur);
@@ -139,9 +137,7 @@ public class Carte implements Comparable<Carte> {
 	// Getters et Setters
 
 	public int getValeur() { return valeur; }
-	public void setValeur(int valeur) { this.valeur = valeur; }
 	public Couleur getCouleur() { return couleur; }
-	public void setCouleur(Couleur couleur) { this.couleur = couleur; }
 	public String getSymbol() {
 		switch (getValeur()) {
 		case 14: case 1:
@@ -157,19 +153,22 @@ public class Carte implements Comparable<Carte> {
 		}
 	}
 
+	public void setValeur(int valeur) { this.valeur = valeur; }
+
 
 	// Override du toString() et des méthodes de comparaison equals() et compareTo()
 
 	@Override
 	public String toString() { return getSymbol() + " de " + getCouleur(); }
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Carte) {
-			if(toString().equals(obj.toString()))
-				return true;
+			return toString().equals(obj.toString());
 		}
 		return false;
 	}
+
 	@Override
 	public int compareTo(Carte c2) { return Integer.compare(this.getValeur(), c2.getValeur()); }
 

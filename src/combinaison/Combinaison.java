@@ -89,7 +89,7 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 		return false;
 	}
 	
-	public static boolean isPaire(ArrayList<Carte> main, int valeurExclue) {
+	private static boolean isPaire(ArrayList<Carte> main, int valeurExclue) {
 
 		int size = main.size();
 		Carte p1,p2;
@@ -108,7 +108,7 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 		if(main.size() < 4)
 			return false;
 
-		boolean isPaire1 = false;
+		boolean isPaire1;
 		boolean isPaire2 = false;
 
 		if((isPaire1 = isPaire(main))) {
@@ -167,14 +167,13 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 		if(main.size() < 5)
 			return false;
 
-		boolean isFlush = true;
 		Couleur couleur = main.get(0).getCouleur();
 
 		for(Carte c : main)
 			if(c.getCouleur() != couleur)
 				return false;
 
-		return isFlush;
+		return true;
 	}
 
 	public static boolean isFull(ArrayList<Carte> main) {
@@ -184,9 +183,7 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 
 		if (isBrelan(main)) {
 			Combinaison brelan = new Brelan(main);
-			if (isPaire(main,brelan.getCombinaisonDe().get(0).getValeur())) {
-				return true;
-			}
+			return isPaire(main, brelan.getCombinaisonDe().get(0).getValeur());
 		}
 		return false;
 	}
@@ -225,21 +222,8 @@ public abstract class Combinaison implements Comparable<Combinaison> {
 	public ArrayList<Carte> getCombinaisonDe() {
 		return combinaisonDe;
 	}
-
-	public void setCombinaisonDe(ArrayList<Carte> combinaisonDe) {
-		this.combinaisonDe = combinaisonDe;
-	}
-
 	public Combinaison getCombinaisonSuivante() {
 		return combinaisonSuivante;
-	}
-
-	public void setCombinaisonSuivante(Combinaison combinaisonSuivante) {
-		this.combinaisonSuivante = combinaisonSuivante;
-	}
-
-	public void setPuissance(int puissance) {
-		this.puissance = puissance;
 	}
 
 	public String toString() {

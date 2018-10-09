@@ -6,7 +6,7 @@ import jeu.Carte;
 
 public class Full extends Combinaison{
 
-	public Full(ArrayList<Carte> main) {
+	Full(ArrayList<Carte> main) {
 		this.combinaisonDe = findFull(main);
 		this.puissance = 7;
 		this.combinaisonSuivante = null;
@@ -14,7 +14,7 @@ public class Full extends Combinaison{
 	
 	private ArrayList<Carte> findFull(ArrayList<Carte> main){
 		
-		ArrayList<Carte> full = new ArrayList<Carte>();
+		ArrayList<Carte> full = new ArrayList<>();
 		
 		Combinaison brelan = new Brelan(main);
 		ArrayList<Carte> clone = (ArrayList<Carte>) main.clone();

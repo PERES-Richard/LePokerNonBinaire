@@ -6,7 +6,7 @@ import jeu.Carte;
 
 public class DoublePaire extends Combinaison {
 
-	public DoublePaire(ArrayList<Carte> main) {
+	DoublePaire(ArrayList<Carte> main) {
 		this.combinaisonDe = findDoublePaire(main);
 		this.puissance = 3;
 		ArrayList<Carte> clone = (ArrayList<Carte>) main.clone();
@@ -16,7 +16,7 @@ public class DoublePaire extends Combinaison {
 
 	private ArrayList<Carte> findDoublePaire(ArrayList<Carte> main) {
 
-		ArrayList<Carte> doublePaire = new ArrayList<Carte>();
+		ArrayList<Carte> doublePaire = new ArrayList<>();
 		Combinaison paire1 = new Paire(main);
 		
 		ArrayList<Carte> clone = (ArrayList<Carte>) main.clone();

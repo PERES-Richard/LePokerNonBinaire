@@ -48,7 +48,6 @@ public class Joueur {
 		this.nom = nom;
 		this.main = strToOrdonnateArray(main);
 		combinaison = Combinaison.findBestComb(this.main);
-		System.out.println(combinaison);
 	}
 
 	/**

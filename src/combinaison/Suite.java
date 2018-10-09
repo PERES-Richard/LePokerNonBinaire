@@ -44,6 +44,10 @@ public class Suite extends Combinaison{
   	}
 
     public String toString() {
-		return super.toString() + "Suite de " + combinaisonDe.get(0).getSymbol() + " avec les cartes " + combinaisonDe + " et comme combinaison secondaire :" + combinaisonSuivante;
+    	String s = "une Quinte (";
+		for(Carte c : combinaisonDe) {
+			s += c.getSymbol() + ", ";
+		}
+		return s.substring(0, s.length()-2) + ")";
 	}
 }

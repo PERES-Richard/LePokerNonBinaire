@@ -43,10 +43,6 @@ public class DoublePaire extends Combinaison {
   	}
 
 	public String toString() {
-		return super.toString() + "Deux paires, une de " + combinaisonDe.get(0).getSymbol() +
-				" avec les cartes " + combinaisonDe.get(0) + ", " + combinaisonDe.get(1) +
-				" et une de "+ combinaisonDe.get(2).getSymbol() +
-				" avec les cartes " + combinaisonDe.get(2) + ", " + combinaisonDe.get(3) +
-				" et comme combinaison secondaire : " + combinaisonSuivante;
+		return "une double paire de " + combinaisonDe.get(0).getSymbol() + " et de " + combinaisonDe.get(3).getSymbol() + " (et avec " + combinaisonSuivante + ")";
 	}
 }

@@ -33,9 +33,6 @@ public class Full extends Combinaison{
   	}
 	
 	public String toString() {
-		return super.toString() + "Full, brelan de " + combinaisonDe.get(0).getSymbol() +
-				" avec les cartes " + combinaisonDe.get(0) + ", " + combinaisonDe.get(1) + ", " + combinaisonDe.get(2) +
-				" et paire "+ combinaisonDe.get(3).getSymbol() +
-				" avec les cartes " + combinaisonDe.get(3) + ", " + combinaisonDe.get(4);
+		return "un Full (brelan de " + combinaisonDe.get(0).getSymbol() + " et paire de " + combinaisonDe.get(3).getSymbol() + ")";
 	}
 }

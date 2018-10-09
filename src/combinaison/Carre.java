@@ -43,6 +43,6 @@ public class Carre extends Combinaison{
   	}
 
 	public String toString() {
-		return super.toString() + "Carr\u00e9 de " + combinaisonDe.get(0).getSymbol() + " avec les cartes " + combinaisonDe + " et comme combinaison secondaire :" + combinaisonSuivante;
+		return "un Carr\u00e9 de " + combinaisonDe.get(0).getSymbol() + " (et avec " + combinaisonSuivante + ")";
 	}
 }

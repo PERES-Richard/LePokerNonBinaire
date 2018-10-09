@@ -95,7 +95,7 @@ public class Jeu {
 			System.out.println("Egalite");
 		}
 		else {
-			System.out.println("Le joueur " + getGagnant(j1, j2).getNom() + " gagne avec la main " +getGagnant(j1, j2).getMain()); // TODO : Output chelou, gagnant premiere carte
+			System.out.println("Le joueur " + getGagnant(j1, j2).getNom() + " gagne avec " +getGagnant(j1, j2).getCombinaison());
 		}
 
 		sc.close();

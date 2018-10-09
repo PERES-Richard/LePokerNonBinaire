@@ -41,6 +41,6 @@ public class Brelan extends Combinaison{
   	}
 
 	public String toString() {
-		return super.toString() + "Brelan de " + combinaisonDe.get(0).getSymbol() + " avec les cartes " + combinaisonDe + " et comme combinaison secondaire :" + combinaisonSuivante;
+		return "un Brelan de " + combinaisonDe.get(0).getSymbol() + " (et avec " + combinaisonSuivante + ")";
 	}
 }

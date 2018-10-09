@@ -23,6 +23,10 @@ public class Flush extends Combinaison{
   	}
 
 	public String toString() {
-		return super.toString() + "Couleurs avec " + combinaisonDe;
+		String s = "une Couleur (";
+		for(Carte c : combinaisonDe) {
+			s += c.getSymbol() + ", ";
+		}
+		return s.substring(0, s.length()-2) + " de " + combinaisonDe.get(0).getCouleur() +")";
 	}
 }

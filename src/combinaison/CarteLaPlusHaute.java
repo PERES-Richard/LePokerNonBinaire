@@ -31,6 +31,6 @@ public class CarteLaPlusHaute extends Combinaison {
 	}
 	
 	public String toString() {
-		return super.toString() + "Carte la plus haute avec : " + combinaisonDe.get(0);
+		return "une carte la plus haute " + combinaisonDe.get(0);
 	}
 }

@@ -14,7 +14,7 @@ public class QuinteFlush extends Combinaison {
 	
 	private ArrayList<Carte> findQuinteFlush(ArrayList<Carte> main){
 		Carte c1 = main.get(0);
-		Carte c2 = main.get(2);
+		Carte c2 = main.get(1);
 		if (c1.getValeur() == 14 && c2.getValeur() == 5) {
 			main.remove(c1);
 			c1.setValeur(1);
@@ -30,7 +30,13 @@ public class QuinteFlush extends Combinaison {
   	}
 	
 	public String toString() {
-		return super.toString() + "Quinte Flush avec les cartes " + combinaisonDe;
+		String s = "une Quinte Flush (";
+		for(Carte c : combinaisonDe) {
+			s += c.getSymbol() + ", ";
+		}
+		s = s.substring(0, s.length()-2);
+		s += " de " + combinaisonDe.get(0).getCouleur()+")";
+		return s;
 	}
 
 }

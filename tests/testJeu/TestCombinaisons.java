@@ -16,6 +16,7 @@ public class TestCombinaisons {
 	Joueur jDoublePaire1,jDoublePaire2;
 	Joueur jBrelan1,jBrelan2;
 	Joueur jSuite1,jSuite2,jSuite3, jNoSuite1,jNoSuite2;
+	Joueur jFlush1, jFlush2, jNoFlush;
 	Joueur jFull1,jFull2;
 	Joueur jCarre1, jCarre2;
 	Joueur jQFlush1, jQFlush2, jQFlush3, jQFlush4;
@@ -43,6 +44,10 @@ public class TestCombinaisons {
 		jSuite1 = new Joueur("test", "APi 2co 5pi 4co 3tr");
 		jSuite2 = new Joueur("test", "6Pi 2co 5pi 4co 3tr");
 		jSuite3 = new Joueur("test", "APi RCo DCa 10Tr VTr");
+		
+		jNoFlush = new Joueur("test", "3Pi VPI Dpi 10Co 9Pi");
+		jFlush1 = new Joueur("test", "3Pi VPI Dpi 10Pi 9Pi");
+		jFlush2 = new Joueur("test", "3Pi VPI Dpi 10Pi 7Pi");
 		
 		jFull1 = new Joueur("test", "9Pi 9Tr 5CO 5Ca 5Pi");
 		jFull2 = new Joueur("test", "9Pi 9Tr 5CO 5Ca 9ca");
@@ -120,6 +125,20 @@ public class TestCombinaisons {
 
 		assertEquals(-1,jSuite1.getCombinaison().compareTo(jSuite2.getCombinaison()));
 		assertEquals(-1,jSuite1.getCombinaison().compareTo(jSuite3.getCombinaison()));
+	}
+	
+	@Test
+	public void testFlush() {
+		
+		assertFalse(Combinaison.isFlush(jNoFlush.getMain()));
+		
+		assertTrue(Combinaison.isFlush(jFlush1.getMain()));
+		assertFalse(Combinaison.isFull(jFlush2.getMain()));
+
+		assertEquals(new Carte(Couleur.Pique,11),jFlush1.getCombinaison().getCombinaisonDe().get(1));
+		assertEquals(new Carte(Couleur.Pique,9),jFlush1.getCombinaison().getCombinaisonDe().get(3));
+		
+		assertEquals(1,jFlush1.getCombinaison().compareTo(jFlush2.getCombinaison()));
 	}
 	
 	@Test
